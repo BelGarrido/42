@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+//#include <stdio.h>
 /*#include <stdlib.h>
 
 int	ft_strlen(char *src)
@@ -29,14 +29,20 @@ int	ft_strlen(char *src)
 unsigned int 	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
 	int	src_index;
-
 	src_index = 0;
-	while (src[src_index] != '\0' && src_index < (size -1))
-	{
-		dest[src_index] = src[src_index];
-		src_index++;
+	if (size > 0){
+		while (src[src_index] != '\0' && src_index < (size -1))
+		{
+			dest[src_index] = src[src_index];
+			src_index++;
+		}
+		dest[src_index] = '\0';
+	} else {
+		while(src[src_index]!='\0'){
+			src_index++;
+		}
 	}
-	dest[src_index] = '\0';
+	
 	return (src_index);
 }
 
@@ -67,4 +73,26 @@ unsigned int 	ft_strlcpy(char *dest, char *src, unsigned int size)
 	printf("original: %s\n", string1);
 	printf("copia: %s\n", string2);
 	return (0);
+}*/
+
+/*int main() {
+    char test[256] = "\0zxcvzxcvzxcvxzcvzxcv";
+    
+    // Test 1
+    printf("%u-", ft_strlcpy(test, "asdf", 16));
+    printf("%s\n", test);
+    
+    // Test 2
+    printf("%u-", ft_strlcpy(test, "uiop", 0));
+    printf("%s\n", test);
+    
+    // Test 3
+    printf("%u-", ft_strlcpy(test, "qwerty", 4));
+    printf("%s\n", test);
+    
+    // Test 4
+    printf("%u-", ft_strlcpy(test, "", 4));
+    printf("%s\n", test);
+
+    return 0;
 }*/
