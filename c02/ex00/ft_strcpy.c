@@ -9,7 +9,7 @@
 /*   Updated: 2024/11/06 12:29:13 by anagarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-/*#include <stdio.h>*/
+//#include <stdio.h>
 
 char	*ft_strcpy(char *dest, char *src)
 {
@@ -21,6 +21,7 @@ char	*ft_strcpy(char *dest, char *src)
 		dest[src_index] = src[src_index];
 		src_index++;
 	}
+	dest[src_index]='\0';
 	return (dest);
 }
 
@@ -29,7 +30,7 @@ char	*ft_strcpy(char *dest, char *src)
 	char	*string1;
 	char	string2[20];
 
-	string1 = "hola";
+	string1 = "holas";
 	ft_strcpy(string2, string1);
 	printf("original :%s\n", string2);
 	printf("copia :%s\n", string1);
