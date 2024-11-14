@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+/*#include <stdlib.h>
 
 int	ft_strlen(char *src)
 {
@@ -23,9 +24,23 @@ int	ft_strlen(char *src)
 		src++;
 	}
 	return (length);
+}*/
+
+unsigned int 	ft_strlcpy(char *dest, char *src, unsigned int size)
+{
+	int	src_index;
+
+	src_index = 0;
+	while (src[src_index] != '\0' && src_index < (size -1))
+	{
+		dest[src_index] = src[src_index];
+		src_index++;
+	}
+	dest[src_index] = '\0';
+	return (src_index);
 }
 
-unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+/*unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
 	unsigned int	i;
 
@@ -39,17 +54,17 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	}
 	dest[i] = '\0';
 	return (ft_strlen(src));
-}
+}*/
 
-int	main(void)
+/*int	main(void)
 {
 	char	string1[] = "hola, que tal?";
-	char	string2[10];
+	char	*string2 = (char *)malloc(ft_strlen(string1)*sizeof(char));
 	int	size;
 
-	size = 4;
+	size = 8;
 	ft_strlcpy(string2, string1, size);
 	printf("original: %s\n", string1);
 	printf("copia: %s\n", string2);
 	return (0);
-}
+}*/
