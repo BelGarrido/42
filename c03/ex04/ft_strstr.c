@@ -1,4 +1,4 @@
-#include <stdio.h>
+//#include <stdio.h>
 
 char *ft_strstr(char *str, char *to_find)
 {
@@ -13,7 +13,7 @@ char *ft_strstr(char *str, char *to_find)
     while (str[i] != '\0')
     {
         j = 0;
-        while(to_find[j] != '\0' && str[i+j]==to_find[j])
+        while(to_find[j] != '\0' && str[i+j] == to_find[j])
         {
             j++;
         }
@@ -23,14 +23,14 @@ char *ft_strstr(char *str, char *to_find)
         }
         i++;
     }
-    return "\0";
+    return NULL;
 }
 
-int main()
+/*int main()
 {
     char str1[] = "Australopitecus";
     char to_find1[] = "lop";
     char *result1 = ft_strstr(str1, to_find1);
     printf("ft_strstr(str1, to_find1) = %s\n", result1);
     return (0); 
-}
+}*/

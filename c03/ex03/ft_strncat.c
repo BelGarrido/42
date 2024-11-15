@@ -1,4 +1,4 @@
-#include <stdio.h>
+//#include <stdio.h>
 
 char *ft_strncat(char *dest, char *src, unsigned int nb)
 {
@@ -20,7 +20,7 @@ char *ft_strncat(char *dest, char *src, unsigned int nb)
     return (dest);
 }
 
-int main()
+/*int main()
 {
     char dest[50] = "Hello, ";
     char src[] = "world! This is a test.";
@@ -29,4 +29,4 @@ int main()
     ft_strncat(dest, src, nb);
     printf("Dest + src: %s\n", dest); 
     return (0);
-}
+}*/

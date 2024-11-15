@@ -1,4 +1,4 @@
-#include <stdio.h>
+//#include <stdio.h>
 
 unsigned int ft_strlcat(char *dest, char *src, unsigned int size)
 {
@@ -24,7 +24,7 @@ unsigned int ft_strlcat(char *dest, char *src, unsigned int size)
     return (i);
 }
 
-int main()
+/*int main()
 {
     char dest[50] = "Hello, ";
     char src[] = "world!";
@@ -33,4 +33,4 @@ int main()
     printf("dest + src: %s\n", dest);
     printf("dest + src length: %u\n", result); 
     return (0);
-}
+}*/
