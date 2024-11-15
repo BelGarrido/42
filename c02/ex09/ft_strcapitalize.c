@@ -35,9 +35,9 @@ char	*ft_strcapitalize(char *str)
 	return (str);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	char	string[] = "heLlo worlD-how42 are you doing?";
 
 	printf("%s", ft_strcapitalize(string));
-}
+}*/

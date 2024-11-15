@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+//#include <stdio.h>
 
 int	ft_str_is_printable(char *str)
 {
@@ -32,7 +32,7 @@ int	ft_str_is_printable(char *str)
 	return (1);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	char	*string;
 	char	*string2;
@@ -44,4 +44,4 @@ int	main(void)
 	printf("~½¬ returns: %i\n", ft_str_is_printable(string));
 	printf("##&A@ returns: %i\n", ft_str_is_printable(string2));
 	printf("empty string returns: %i\n", ft_str_is_printable(string3));
-}
+}*/
