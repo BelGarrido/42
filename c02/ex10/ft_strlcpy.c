@@ -28,22 +28,24 @@ int	ft_strlen(char *src)
 
 unsigned int 	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
-	int	src_index;
+	unsigned int	src_index;
+	int length;
 	src_index = 0;
-	if (size > 0){
+	length = 0;
+	if (size > 0)
+	{
 		while (src[src_index] != '\0' && src_index < (size -1))
 		{
 			dest[src_index] = src[src_index];
 			src_index++;
 		}
 		dest[src_index] = '\0';
-	} else {
-		while(src[src_index]!='\0'){
-			src_index++;
-		}
 	}
-	
-	return (src_index);
+	while(src[length]!='\0')
+		{
+			length ++;
+		}
+	return (length);
 }
 
 /*unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
