@@ -9,6 +9,7 @@
 /*   Updated: 2024/11/06 12:29:13 by anagarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 //#include <stdio.h>
 
 char	*ft_strcpy(char *dest, char *src)
@@ -21,7 +22,7 @@ char	*ft_strcpy(char *dest, char *src)
 		dest[src_index] = src[src_index];
 		src_index++;
 	}
-	dest[src_index]='\0';
+	dest[src_index] = '\0';
 	return (dest);
 }
 

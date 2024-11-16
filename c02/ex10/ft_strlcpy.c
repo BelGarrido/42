@@ -11,25 +11,13 @@
 /* ************************************************************************** */
 
 //#include <stdio.h>
-/*#include <stdlib.h>
+//#include <stdlib.h>
 
-int	ft_strlen(char *src)
-{
-	int	length;
-
-	length = 0;
-	while (*src != '\0')
-	{
-		length++;
-		src++;
-	}
-	return (length);
-}*/
-
-unsigned int 	ft_strlcpy(char *dest, char *src, unsigned int size)
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 {
 	unsigned int	src_index;
-	int length;
+	unsigned int	length;
+
 	src_index = 0;
 	length = 0;
 	if (size > 0)
@@ -41,10 +29,10 @@ unsigned int 	ft_strlcpy(char *dest, char *src, unsigned int size)
 		}
 		dest[src_index] = '\0';
 	}
-	while(src[length]!='\0')
-		{
-			length ++;
-		}
+	while (src[length] != '\0')
+	{
+		length ++;
+	}
 	return (length);
 }
 
