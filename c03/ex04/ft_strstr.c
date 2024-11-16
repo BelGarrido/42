@@ -1,29 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anagarri <anagarri@student.42malaga.c      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/15 12:29:09 by anagarri          #+#    #+#             */
+/*   Updated: 2024/11/15 12:29:11 by anagarri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 //#include <stdio.h>
 
-char *ft_strstr(char *str, char *to_find)
+char	*ft_strstr(char *str, char *to_find)
 {
-    int i = 0;
-    int j;
+	int	i;
+	int	j;
 
-    if (to_find[0] == '\0')
-    {
-        return str;
-    }
-
-    while (str[i] != '\0')
-    {
-        j = 0;
-        while(to_find[j] != '\0' && str[i+j] == to_find[j])
-        {
-            j++;
-        }
-        if(to_find[j] == '\0')
-        {
-            return str+i;
-        }
-        i++;
-    }
-    return NULL;
+	i = 0;
+	if (to_find[0] == '\0')
+	{
+		return (str);
+	}
+	while (str[i] != '\0')
+	{
+		j = 0;
+		while ((to_find[j] != '\0') && (str[i + j] == to_find[j]))
+		{
+			j++;
+		}
+		if (to_find[j] == '\0')
+		{
+			return (str + i);
+		}
+		i++;
+	}
+	return (NULL);
 }
 
 /*int main()
