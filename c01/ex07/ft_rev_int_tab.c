@@ -27,7 +27,7 @@ void	ft_rev_int_tab(int *tab, int size)
 	}
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int	size;
 	int	numbers[] = {1, 2, 3, 4};
@@ -47,3 +47,4 @@ int	main(void)
 	}
 	printf("\n");
 }
+*/
