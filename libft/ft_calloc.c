@@ -1,22 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anagarri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/10 12:43:58 by anagarri          #+#    #+#             */
+/*   Updated: 2024/12/10 12:44:19 by anagarri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <stdio.h>
 
-void    *ft_memset(void *ptr, int x, size_t n);
+void	*ft_memset(void *ptr, int x, size_t n);
 
 void	*ft_calloc(size_t num, size_t element_size)
-{	
-	if (num == 0 || element_size == 0)
-    	num = element_size = 1;
-	void	*mem = malloc(num * element_size);
-	ft_memset(mem, '\0', num * element_size);
+{
+	void	*mem;
 
-	return (mem);	
+	mem = malloc(num * element_size);
+	if (num == 0 || element_size == 0)
+	{
+		num = 1;
+		element_size = 1;
+	}
+	ft_memset(mem, '\0', num * element_size);
+	return (mem);
 }
 
-int main()
+/*int	main()
 {	
-	int num = 10;
-	int *mem = (int *)ft_calloc(num, sizeof(int));
+	int num = 5;
+	char *mem = (char *)ft_calloc(num, sizeof(char));
 	int i= 0;
 	while(i < num)
 	{
@@ -24,4 +40,4 @@ int main()
 		i++;
 	}
 	
-}
+}*/

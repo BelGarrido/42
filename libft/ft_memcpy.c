@@ -1,13 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anagarri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/05 16:06:02 by anagarri          #+#    #+#             */
+/*   Updated: 2024/12/05 16:06:04 by anagarri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
-void    *ft_memcpy(void *dest_str, const void * src_str, unsigned int n)
+void	*ft_memcpy(void *dest_str, const void *src_str, size_t n)
 {
-    unsigned int	i;
-    unsigned char *dest = (unsigned char *)dest_str;
-    unsigned char *src = (unsigned char *)src_str;
-	i = 0;	
+	unsigned int	i;
+	unsigned char	*dest;
+	unsigned char	*src;
+
+	i = 0;
+	dest = (unsigned char *)dest_str;
+	src = (unsigned char *)src_str;
 	if (n > 0)
 	{
 		while (i < (n))
@@ -16,10 +31,10 @@ void    *ft_memcpy(void *dest_str, const void * src_str, unsigned int n)
 			i++;
 		}
 	}
-    return dest_str;
+	return (dest_str);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	char	string1[] = "hola, que tal?";
 	char	*string2 = (char *)malloc(strlen(string1)*sizeof(char));
@@ -30,4 +45,4 @@ int	main(void)
 	printf("original: %s\n", string1);
 	printf("copia: %s\n", string2);
 	return (0);
-}
+}*/

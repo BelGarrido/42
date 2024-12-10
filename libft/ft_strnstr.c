@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-const char	*ft_strstr	(const char *str, const char *to_find, unsigned int n)
+char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 {
 	int	i;
 	int	j;
@@ -30,7 +30,7 @@ int main()
 {
     char str1[] = "Australopitecus";
     char to_find1[] = "casa";
-    const char *result1 = ft_strstr(str1, to_find1, 20);
-    printf("ft_strstr(str1, to_find1) = %s\n", result1);
+    char *result1 = ft_strnstr(str1, to_find1, 20);
+    printf("ft_strnstr(str1, to_find1) = %s\n", result1);
     return (0); 
 }

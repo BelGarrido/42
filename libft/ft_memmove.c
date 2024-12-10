@@ -1,31 +1,32 @@
 #include <stdio.h>
 
-void *ft_memmove(void *dest, const void *src, unsigned int count)
+void	*ft_memmove(void *dest, const void *src, size_t count)
 {
-	int i = 0;
-	char *d = (char *)dest;
-	const char *s = (const char *)src;
+	char	*d = (char *)dest;
+	const char	*s = (const char *)src;
+	int	i = 0;
+
 	if (s + count > d)
-	{ 	
+	{
 		i = count - 1;
 		while (i >= 0)
 		{
 			d[i] = s[i];
 			i--;
-		}	
+		}
 	}
-	else 
+	else
 	{
 		while (i < count)
 		{
 			d[i] = s[i];
 			i++;
-		}	
+		}
 	}
 	return (dest);
 }
 
-int main ()
+int	main(void)
 {
 	char dest[21] = "a shiny white sphere";
 	char *src = dest + 2;

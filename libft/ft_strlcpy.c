@@ -1,5 +1,17 @@
-//#include <stdio.h>
-//#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anagarri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/05 16:11:59 by anagarri          #+#    #+#             */
+/*   Updated: 2024/12/05 16:12:01 by anagarri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <stdlib.h>
 
 unsigned int	ft_strlcpy(char *dest, const char *src, unsigned int size)
 {
