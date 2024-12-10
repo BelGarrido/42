@@ -4,7 +4,7 @@
 
 unsigned int ft_strlen(const char *s);
 
- char *ft_strdup(const char *s)
+char *ft_strdup(const char *s)
  {	
 	int i;
 	
@@ -12,7 +12,7 @@ unsigned int ft_strlen(const char *s);
 	if (str_cpy == NULL)
 	{
         return NULL;
-    }
+        }
 	i = 0;
 	while (s[i] != '\0')
 	{
@@ -21,11 +21,11 @@ unsigned int ft_strlen(const char *s);
 	}
 	str_cpy[i] = '\0';
 	return (str_cpy);
- }
+}
 
- int main(void)
- {
+int main(void)
+{
 	const char *string = "hola";
 	char *new_string = ft_strdup(string);
 	printf("%s\n", new_string);
- }
+}
