@@ -24,6 +24,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int	ft_strncmp(const char *s1, const char *s2);
 char	*ft_strnstr(const char *str, const char *to_find, size_t n);
 char	*ft_strrchr(const char *s, int c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	ft_tolower(int c);
 char	ft_toupper(int c);
 unsigned int	ft_strlen(const char *s);
