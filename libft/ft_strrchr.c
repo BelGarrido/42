@@ -11,29 +11,29 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "libft.h"
 
 char *ft_strrchr(const char *s, int c)
-{
-	int occur = 0;
+{	
+	int len = ft_strlen(s);
 
-	while (*s != '\0')
+	while (s+len > s)
+	//while (len > 0)
 	{
-		if (*s == c)
+		if (s[len] == c)
 		{
-			s++;
-			occur = 1;
+			return ((char *)s + len);
+			// return ((char *)&s[len]);
 		}
-		s++;
+		len--;
 	}
-	if (occur != 0)
-		return (char *)s;
-	else
-		return NULL;
+	
+	return (NULL);
 }
 
 int main(void)
 {   
-    const char *s = "hola";
+    const char *s = "holajhfagf";
     int c = 'a';
-    printf("%p",ft_strrchr(s, c));
+    printf("%s\n",ft_strrchr(s, c));
 }
