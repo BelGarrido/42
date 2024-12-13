@@ -28,7 +28,13 @@ OBJS := ft_isalpha.o \
 		ft_calloc.o \
 		ft_strdup.o \
 		ft_substr.o \
-		ft_strjoin.o
+		ft_strjoin.o \
+		ft_strmapi.o \
+		ft_striteri.o \
+		ft_putchar_fd.o \
+		ft_putstr_fd.o \
+		ft_putendl_fd.o \
+		ft_putnbr_fd.o 
 
 all: ${NAME}
 
@@ -50,5 +56,5 @@ fclean:
 	@echo "Removing library archive ${NAME}..."
 	rm -rvf ${NAME}
 
-bonus:
-	@echo "Compiling bonus functions..."
+# bonus:
+# 	@echo "Compiling bonus functions..."

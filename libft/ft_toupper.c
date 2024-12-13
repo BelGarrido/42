@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
 char	ft_toupper(int c)
 {
@@ -21,7 +21,7 @@ char	ft_toupper(int c)
 	return (c);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	printf("%c", ft_toupper('c'));
-}
+}*/

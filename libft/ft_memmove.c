@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t count)
 {
@@ -20,8 +20,10 @@ void	*ft_memmove(void *dest, const void *src, size_t count)
 
 	d = (char *)dest;
 	i = 0;
+	//printf("s+count=%p, s=%p, d=%p\n", s+count, s, d);
 	if (s + count > d)
 	{
+		//printf("PATRAS\n");
 		i = count - 1;
 		while (i >= 0)
 		{
@@ -31,8 +33,9 @@ void	*ft_memmove(void *dest, const void *src, size_t count)
 	}
 	else
 	{
-		while (i < count)
+		while (i < (int)count)
 		{
+			//printf("PALANTE\n");
 			d[i] = s[i];
 			i++;
 		}
@@ -45,5 +48,9 @@ void	*ft_memmove(void *dest, const void *src, size_t count)
 	char dest[21] = "a shiny white sphere";
 	char *src = dest + 2;
 	ft_memmove(dest + 8, src, 11);
+	char    src[] = "lorem ipsum dolor sit amet";
+    char    *dest;
+	dest = src + 1;
+	ft_memmove(src, dest, 8);
 	printf("%s\n", dest);
 }*/

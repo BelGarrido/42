@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
+#include "libft.h"
 
 void	ft_putnbr_fd(int n, int fd)
 {
@@ -43,10 +41,10 @@ void	ft_putnbr_fd(int n, int fd)
 	write (fd, &char_num, 1);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int	number;
 	int fd = open("./prueba.txt", O_RDWR);
 	number = -2147483648;
 	ft_putnbr_fd(number, fd);
-}
+}*/

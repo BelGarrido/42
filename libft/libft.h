@@ -17,6 +17,7 @@
 # include <stdlib.h> // malloc
 # include <unistd.h> // write
 # include <fcntl.h>  // flags open
+# include <stdio.h> // printf
 
 int		ft_atoi(const char *string);
 void	ft_bzero(void *s, size_t n);
@@ -43,7 +44,7 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlen(const char *s);
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(char *s1, char *s2, size_t n);
 char	*ft_strnstr(const char *str, const char *to_find, size_t n);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
