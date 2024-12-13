@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/13 14:47:28 by anagarri          #+#    #+#             */
+/*   Updated: 2024/12/13 14:47:28 by anagarri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 
 char	*ft_strnstr(const char *str, const char *to_find, size_t n)
@@ -26,11 +38,11 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 	return ('\0');
 }
 
-int main()
+/*int main()
 {
     char str1[] = "Australopitecus";
     char to_find1[] = "casa";
     char *result1 = ft_strnstr(str1, to_find1, 20);
     printf("ft_strnstr(str1, to_find1) = %s\n", result1);
     return (0); 
-}
+}*/

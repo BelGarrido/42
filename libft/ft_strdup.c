@@ -1,18 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/13 14:47:05 by anagarri          #+#    #+#             */
+/*   Updated: 2024/12/13 14:47:05 by anagarri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
 
-unsigned int ft_strlen(const char *s);
+unsigned int	ft_strlen(const char *s);
 
-char *ft_strdup(const char *s)
- {	
-	int i;
-	
-	char * str_cpy = (char *)malloc(ft_strlen(s)*sizeof(char) + 1);
+char	*ft_strdup(const char *s)
+{
+	int		i;
+	char	*str_cpy;
+
+	str_cpy = (char *)malloc(ft_strlen(s)*sizeof(char) + 1);
 	if (str_cpy == NULL)
 	{
-        return NULL;
-        }
+		return (NULL);
+	}
 	i = 0;
 	while (s[i] != '\0')
 	{
@@ -23,9 +36,9 @@ char *ft_strdup(const char *s)
 	return (str_cpy);
 }
 
-int main(void)
+/*int main(void)
 {
 	const char *string = "hola";
 	char *new_string = ft_strdup(string);
 	printf("%s\n", new_string);
-}
+}*/

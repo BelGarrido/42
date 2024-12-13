@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/13 14:47:13 by anagarri          #+#    #+#             */
+/*   Updated: 2024/12/13 14:47:13 by anagarri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 
-void ft_striteri(char *s, void (*f)(unsigned int, char*))
-{	
-	int i;
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	int	i;
 
 	i = 0;
 	while (s[i] != '\0')
@@ -12,19 +24,19 @@ void ft_striteri(char *s, void (*f)(unsigned int, char*))
 	}
 }
 
-void to_uppercase(unsigned int i, char *c)
+/*void	to_uppercase(unsigned int i, char *c)
 {	
     if (c[i] >= 'a' && c[i] <= 'z')
         c[i] = c[i] - 32;       
 }
 
-void to_lowercase(unsigned int i, char *c)
+void	to_lowercase(unsigned int i, char *c)
 {	
     if (c[i] >= 'A' && c[i] <= 'Z')
         c[i] = c[i] + 32;       
 }
 
-int main()
+int	main()
 {	
 	unsigned int i;
 
@@ -35,4 +47,4 @@ int main()
 	ft_striteri(s2, to_lowercase);
 	printf("%s\n", s);
 	printf("%s\n", s2);
-}
+}*/

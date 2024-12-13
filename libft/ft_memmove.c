@@ -1,11 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/13 14:46:27 by anagarri          #+#    #+#             */
+/*   Updated: 2024/12/13 14:46:27 by anagarri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 
 void	*ft_memmove(void *dest, const void *src, size_t count)
 {
-	char	*d = (char *)dest;
+	char		*d;
 	const char	*s = (const char *)src;
-	int	i = 0;
+	int			i;
 
+	d = (char *)dest;
+	i = 0;
 	if (s + count > d)
 	{
 		i = count - 1;
@@ -26,10 +40,10 @@ void	*ft_memmove(void *dest, const void *src, size_t count)
 	return (dest);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	char dest[21] = "a shiny white sphere";
 	char *src = dest + 2;
 	ft_memmove(dest + 8, src, 11);
 	printf("%s\n", dest);
-}
+}*/
