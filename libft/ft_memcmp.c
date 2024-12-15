@@ -11,15 +11,17 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+#include <string.h>
 
 int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
 	int		i;
-	char	*s1;
-	char	*s2;
+	unsigned char	*s1;
+	unsigned char	*s2;
 
-	s1 = (char *) str1;
-	s2 = (char *) str2;
+	s1 = (unsigned char *) str1;
+	s2 = (unsigned char *) str2;
 	i = 0;
 	while (n > 0)
 	{
@@ -37,7 +39,8 @@ int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
     char s1[] = "hola mundo";
     char s2[] = "hola Mundo";
-    printf("%i\n",  ft_memcmp (s1, s2, 7));
-    printf("%i\n",  memcmp (s1, s2, 7));
+	int prueba = memcmp("t\200", "t\0", 2);
+    printf("%i\n",  ft_memcmp ("t\200", "t\0", 2));
+    printf("%i\n", prueba);
     return 0;
 }*/

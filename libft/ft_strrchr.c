@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 18:01:40 by anagarri          #+#    #+#             */
-/*   Updated: 2024/12/13 15:37:13 by anagarri         ###   ########.fr       */
+/*   Updated: 2024/12/15 21:33:34 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strrchr(const char *s, int c)
 	int	len;
 
 	len = ft_strlen(s);
-	while (s + len > s)
+	while (s + len >= s)
 	{
 		if (s[len] == c)
 		{
@@ -30,7 +30,7 @@ char	*ft_strrchr(const char *s, int c)
 
 /*int main(void)
 {   
-    const char *s = "holajhfagf";
-    int c = 'a';
+    const char *s = "bonjour";
+    int c = 'b';
     printf("%s\n",ft_strrchr(s, c));
 }*/

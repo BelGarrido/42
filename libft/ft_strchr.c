@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anagarri <anagarri@student.42malaga.c      +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 18:01:40 by anagarri          #+#    #+#             */
-/*   Updated: 2024/11/18 18:01:42 by anagarri         ###   ########.fr       */
+/*   Updated: 2024/12/14 13:47:00 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,15 @@ char	*ft_strchr(const char *s, int c)
 {
 	while (*s != '\0')
 	{
-		if (*s == c)
+		if (*s == (char)c)
 		{
 			return ((char *)s);
 		}
 		s++;
+	}
+	if (c == '\0')
+	{
+		return ((char *)s);
 	}
 	return (NULL);
 }
@@ -28,6 +32,6 @@ char	*ft_strchr(const char *s, int c)
 /*int	main(void)
 {   
 	const char *s = "holo";
-	int c = 'o';
-	printf("%p",ft_strchr(s, c));
+	int c = '\0';
+	printf("%s",ft_strchr(s, 't' + 256));
 }*/
