@@ -21,6 +21,8 @@ void	*ft_memmove(void *dest, const void *src, size_t count)
 	d = (char *)dest;
 	i = 0;
 	//printf("s+count=%p, s=%p, d=%p\n", s+count, s, d);
+	if (!dest && !src)
+	return (NULL);
 	if (s + count > d)
 	{
 		//printf("PATRAS\n");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 18:01:40 by anagarri          #+#    #+#             */
-/*   Updated: 2024/12/15 21:33:34 by root             ###   ########.fr       */
+/*   Updated: 2024/12/16 15:26:29 by anagarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strrchr(const char *s, int c)
 	len = ft_strlen(s);
 	while (s + len >= s)
 	{
-		if (s[len] == c)
+		if (s[len] == (char)c)
 		{
 			return ((char *)s + len);
 		}

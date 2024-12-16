@@ -1,9 +1,9 @@
 .PHONY := all clean fclean
+NAME := libft.a
 
 CC   := gcc -Wall -Werror -Wextra
 LINKERFLAG := -lm
 
-NAME := libft.a
 OBJS := ft_isalpha.o \
 		ft_isdigit.o \
 		ft_isalnum.o \
@@ -50,11 +50,11 @@ ${NAME}: libft.h ${OBJS}
 
 clean:
 	@echo "Cleaning up..."
-	rm -rvf ${OBJS}
+	rm -rvf ${OBJS} || true
 
-fclean:
+fclean: clean
 	@echo "Removing library archive ${NAME}..."
-	rm -rvf ${NAME}
+	rm -rvf ${NAME} || true
 
 # bonus:
 # 	@echo "Compiling bonus functions..."
