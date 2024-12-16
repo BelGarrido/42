@@ -6,7 +6,7 @@
 /*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 15:27:06 by anagarri          #+#    #+#             */
-/*   Updated: 2024/12/13 15:32:50 by anagarri         ###   ########.fr       */
+/*   Updated: 2024/12/16 14:26:15 by anagarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		ft_strncmp(char *s1, char *s2, size_t n);
 char	*ft_strnstr(const char *str, const char *to_find, size_t n);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
-char	ft_tolower(int c);
-char	ft_toupper(int c);
+int		ft_tolower(int c);
+int		ft_toupper(int c);
 
 #endif
