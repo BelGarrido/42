@@ -1,52 +1,64 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoa2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/13 14:46:07 by anagarri          #+#    #+#             */
-/*   Updated: 2024/12/13 14:46:07 by anagarri         ###   ########.fr       */
+/*   Created: 2024/12/17 14:19:15 by anagarri          #+#    #+#             */
+/*   Updated: 2024/12/17 15:19:16 by anagarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
+#include "libft.h"
 
-char *ft_itoa(int n);
-{
-	char	char_num;
-	int		num;
-	char	*string_num = (char *)malloc(sizeof(char))
-	num = 0;
-	if (n == -2147483648)
-	{
-		//write (1, "-2147483648", 11);
-		return ;
-	}
-	if (n < 0)
-	{
-		//write (1, "-", 1);
-		n = -n;
-	}
-	if (n < 10)
-	{
-		char_num = n + 48;
-		//write (1, &char_num, 1);
-		return ;
-	}
-	num = n % 10;
-	n = n / 10;
-	char_num = num + 48;
-	ft_itoa(n);
-	//write (fd, &char_num, 1);
-}
-
-int	main(void)
+static int	ft_get_len(int n)
 {
 	int	number;
-	int fd = open("./prueba.txt", O_RDWR);
-	number = -2147483648;
-	ft_putnbr_fd(number, fd);
+	int	count;
+	
+	number = n;
+	count = 1;
+	if (number < 0)
+		count++;
+	while (number / 10 != 0)
+	{	
+		number = number / 10;
+		count++;
+		
+	}
+	return (count);
+}
+
+char	*ft_itoa(int n)
+{
+	int		len;
+	char	*number;
+	int		aux_num;
+	int		modul_num;
+	
+	len = ft_get_len(n);
+	number = (char *)malloc((len + 1)*sizeof(char));
+	aux_num = n;
+	
+	while (len > 0)
+	{	
+		printf("aux_num: %i\n", aux_num);
+		aux_num = aux_num / 10;
+		modul_num = aux_num % 10;
+		printf("modul_num: %i\n", modul_num);
+		number[len - 1] = modul_num + 48;
+		printf("number string: %s\n", number);
+		len --;
+	}
+	number[len] = '\0';
+	return (number);
+
+}
+
+int	main()
+{
+	int n = 123;
+	printf("length: %i\n", ft_get_len(n));
+	printf("result of itoa: %s", ft_itoa(n));
 }

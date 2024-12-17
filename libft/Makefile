@@ -34,7 +34,8 @@ OBJS := ft_isalpha.o \
 		ft_putchar_fd.o \
 		ft_putstr_fd.o \
 		ft_putendl_fd.o \
-		ft_putnbr_fd.o 
+		ft_putnbr_fd.o \
+		ft_strtrim.o
 
 all: ${NAME}
 
@@ -50,11 +51,11 @@ ${NAME}: libft.h ${OBJS}
 
 clean:
 	@echo "Cleaning up..."
-	rm -rvf ${OBJS} || true
+	rm -rvf ${OBJS} 
 
 fclean: clean
 	@echo "Removing library archive ${NAME}..."
-	rm -rvf ${NAME} || true
+	rm -rvf ${NAME}
 
 # bonus:
 # 	@echo "Compiling bonus functions..."

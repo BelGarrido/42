@@ -1,77 +1,81 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/17 10:23:15 by anagarri          #+#    #+#             */
+/*   Updated: 2024/12/17 13:56:48 by anagarri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include "libft.h"
 
-char *ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	int i = 0;
-	int j = 0;
-	int k = 0;
-	int lenS1 = ft_strlen(s1);
-	char *result = (char *)malloc((lenS1 + 1)*sizeof(char));
-	char *result2 = (char *)malloc((lenS1 + 1)*sizeof(char));
-	int len = ft_strlen(result);
-	
-	while (s1[i] != '\0') // comprobación de s1[i] con cada elemento en set[j]
-	{	
-		if (s1[i] == set[j])
+	int		i;
+	int		j;
+	int		len;
+	char	*scpy;
+	char	*result;
+
+	len = ft_strlen(s1) - 1;
+	scpy = ft_strdup(s1);
+	j = 0;
+	if (!scpy)
+	{
+		return (NULL);
+	}
+	while (len >= 0)
+	{
+		if (set[j] == s1[len])
+		{
+			len--;
+			j = 0;
+		}
+		else if (set[j] == '\0')
+		{
+			scpy[len + 1] = '\0';
+			break ;
+		}
+		else
+			j++;
+	}
+	i = 0;
+	j = 0;
+	while (s1[i] != '\0')
+	{
+		if (set[j] == scpy[i])
 		{
 			i++;
 			j = 0;
 		}
 		else if (set[j] == '\0')
-		{
-			break;
-		}
+			break ;
 		else
 			j++;
 	}
-	// while (set[j] != '\0') // comprobación de s1[i] con cada elemento en set[j]
-	// {
-	// 	if (set[j] == s1[i])
-	// 		i++;
-	// 	else
-	// 		j++;
-	// }
-	while (s1[i] != '\0')
-	{
-		result[k] = s1[i];
-		i++;
-		k++;
-	}
-	result[k] = '\0';
-	j = 0;
-	// while (s1 + len > result) // comprobación de s1[i] con cada elemento en set[j]
-	// {	
-	// 	if (result[len] == set[j])
-	// 	{
-	// 		len--;
-	// 		j = 0;
-	// 	}
-	// 	else if (set[j] == '\0')
-	// 	{
-	// 		break;
-	// 	}
-	// 	else
-	// 		j++;
-	// }
-	// result[len] = '\0';
-	return result;
-	// comprobación de s1[i] con cada elemento en set[j]
-		// hay coincidencia --> ese elemento NO se copia y pasamos al siguiente de s1 ()
-
-
-		// NO hay coincidencia --> ese elemento sí se copia en nueva string recortada
-		// una vez NO hay coincidencia --> se aborta la operación y se comienza desde el final
-	// malloc nueva string recortada
-	// return nueva string recortada
-
-	// **/hola/**     set = */
+	result = ft_strdup (scpy + i);
+	free(scpy);
+	return (result);
 }
-
-int main (void)
+/* static int ft_is_in_set(char c, const char *set)
 {
-	char *string = "**.hola..*";
-	char *set = "*.";
-	char *newstring = ft_strtrim(string, set);
+    while (*set)
+    {
+        if (c == *set)
+            return (1);
+        set++;
+    }
+    return (0);
+} */
+
+/*int	main(void)
+{
+	char	*string = "*43*.hola..*";
+	char	*set = "43*.5";
+	char	*newstring = ft_strtrim(string, set);
 	printf("%s\n", newstring);
-}
+}*/

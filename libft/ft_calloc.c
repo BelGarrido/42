@@ -12,8 +12,6 @@
 
 #include "libft.h"
 
-void	*ft_memset(void *ptr, int x, size_t n);
-
 void	*ft_calloc(size_t num, size_t element_size)
 {
 	void	*mem;

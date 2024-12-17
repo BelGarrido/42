@@ -45,6 +45,6 @@ void	ft_putnbr_fd(int n, int fd)
 {
 	int	number;
 	int fd = open("./prueba.txt", O_RDWR);
-	number = -2147483648;
+	number = -1256563;
 	ft_putnbr_fd(number, fd);
 }*/

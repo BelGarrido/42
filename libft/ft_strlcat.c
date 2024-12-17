@@ -10,15 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*The strlcat() function appends the NUL-terminated string src to the end of dst.
-It will append at most size - strlen(dst) - 1 bytes, NUL-terminating the result.
-The strlcat() function returns the total length of the string they tried to create.
-For strlcat() that means the initial length of dst plus the length of src.
-Note, however, that if strlcat() traverses size characters without finding a NUL,
-the length of the string is considered to be size and the destination string will not
-be NUL-terminated (since there was no space for the NUL). This keeps strlcat() from
-running off the end of a string.*/
-
 #include "libft.h"
 #include <string.h>
 #include <bsd/string.h>
