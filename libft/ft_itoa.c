@@ -12,23 +12,7 @@
 
 #include "libft.h"
 
-static int	ft_get_len(int n)
-{
-	int	number;
-	int	count;
-	
-	number = n;
-	count = 1;
-	if (number < 0)
-		count++;
-	while (number / 10 != 0)
-	{	
-		number = number / 10;
-		count++;
-		
-	}
-	return (count);
-}
+static int	ft_get_len(int n);
 
 char	*ft_itoa(int n)
 {
@@ -39,26 +23,49 @@ char	*ft_itoa(int n)
 	
 	len = ft_get_len(n);
 	number = (char *)malloc((len + 1)*sizeof(char));
-	aux_num = n;
-	
+	if (!number)
+		return (NULL);
+	number[len] = '\0';
+	if (n < 0)
+	{
+		//number[0] = '-';
+		aux_num = -n;
+	}
+	else
+		aux_num = n;
 	while (len > 0)
-	{	
-		printf("aux_num: %i\n", aux_num);
-		aux_num = aux_num / 10;
+	{
+		if (n < 0 && len == 1)
+		{
+			number[0] = '-';
+    		break;
+		}
 		modul_num = aux_num % 10;
-		printf("modul_num: %i\n", modul_num);
-		number[len - 1] = modul_num + 48;
-		printf("number string: %s\n", number);
+		aux_num = aux_num / 10;
+		number[len - 1] = modul_num + '0';
 		len --;
 	}
-	number[len] = '\0';
 	return (number);
 
+}
+static int	ft_get_len(int n)
+{
+	int	count;
+	
+	count = 1;
+	if (n < 0)
+		count++;
+	while (n / 10 != 0)
+	{	
+		n = n / 10;
+		count++;
+	}
+	return (count);
 }
 
 int	main()
 {
-	int n = 123;
+	int n = -123;
 	printf("length: %i\n", ft_get_len(n));
 	printf("result of itoa: %s", ft_itoa(n));
 }
