@@ -29,19 +29,19 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 		{
 			j++;
 			if (i + j > n)
-				return ('\0');
+				return (NULL);
 		}
 		if (to_find[j] == '\0')
 			return ((char *)str + i);
 		i++;
 	}
-	return ('\0');
+	return (NULL);
 }
 
 /*int main()
 {
     char str1[] = "Australopitecus";
-    char to_find1[] = "casa";
+    char to_find1[] = "x";
     char *result1 = ft_strnstr(str1, to_find1, 20);
     printf("ft_strnstr(str1, to_find1) = %s\n", result1);
     return (0); 
