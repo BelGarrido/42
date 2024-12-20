@@ -30,11 +30,15 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	return (mods);
 }
 
-/*char to_uppercase(unsigned int i, char c)
+char to_uppercase(unsigned int i, char c)
 {	
     if (c >= 'a' && c <= 'z')
         c = c - 32;
-	return c;    
+	return c;
+	if (0)
+	{
+		i = 0;
+	}    
 }
 
 int main()
@@ -42,4 +46,4 @@ int main()
 	char s[] = "michi michi";
 	printf("%s\n", s);
 	printf("%s\n", ft_strmapi(s, to_uppercase));
-}*/
+}

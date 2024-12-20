@@ -38,5 +38,4 @@ void	*ft_calloc(size_t num, size_t element_size)
 		printf("%d\n", mem[i]);
 		i++;
 	}
-	
 }*/
