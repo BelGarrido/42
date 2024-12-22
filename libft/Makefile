@@ -34,6 +34,7 @@ SRC = ft_isalpha.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c \
+	ft_split.c \
 	ft_strtrim.c
 cBJ = $(SRC:.c=.o)
 
@@ -46,9 +47,9 @@ $(NAME): $(cBJ)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(cBJ) || true
+	rm -f $(cBJ)
 
 fclean: clean
-	rm -f $(NAME) || true
+	rm -f $(NAME)
 
 re: fclean all
