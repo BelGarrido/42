@@ -13,18 +13,18 @@
 #include <stdio.h>
 #include "libft.h"
 
-static int is_in_set(char c, const char *set)
+static int	is_in_set(char c, const char *set)
 {
-    while (*set)
-    {
-        if (c == *set)
-            return (1);
-        set++;
-    }
-    return (0);
+	while (*set)
+	{
+		if (c == *set)
+			return (1);
+		set++;
+	}
+	return (0);
 }
 
-static void trimback(int len, const char* s1, const char* set, char* scpy)
+static void	trimback(int len, const char *s1, const char *set, char *scpy)
 {
 	while (len >= 0)
 	{
@@ -33,69 +33,39 @@ static void trimback(int len, const char* s1, const char* set, char* scpy)
 			scpy[len + 1] = '\0';
 			break ;
 		}
-		len--;	
+		len--;
 	}
 }
 
-static int trimfront(const char* s1, const char* set, char* scpy)
+static int	trimfront(const char *s1, const char *set, char *scpy)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s1[i] != '\0')
 	{
 		if (!is_in_set(scpy[i], set))
-			break;
+			break ;
 		i++;
 	}
-	return i;
+	return (i);
 }
 
 char	*ft_strtrim(const char *s1, const char *set)
 {
 	int		i;
-	//int		len;
 	char	*scpy;
 	char	*result;
 
-	//len = ft_strlen(s1) - 1;
 	scpy = ft_strdup(s1);
 	if (!scpy)
 		return (NULL);
 	trimback((ft_strlen(s1)-1), s1, set, scpy);
-	/*while (len >= 0)
-	{
-		if (!is_in_set(s1[len], set))
-		{
-			scpy[len + 1] = '\0';
-			break ;
-		}
-		len--;	
-	}
-	i = 0;*/
 	i = trimfront(s1, set, scpy);
-	/*while (s1[i] != '\0')
-	{
-		if (!is_in_set(scpy[i], set))
-			break;
-		i++;
-	}*/
 	result = ft_strdup (scpy + i);
 	free(scpy);
 	return (result);
 }
-
-
-/* static int ft_is_in_set(char c, const char *set)
-{
-    while (*set)
-    {
-        if (c == *set)
-            return (1);
-        set++;
-    }
-    return (0);
-} */
 
 /*int	main(void)
 {
