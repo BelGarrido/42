@@ -15,29 +15,23 @@
 void	*ft_memmove(void *dest, const void *src, size_t count)
 {
 	char		*d;
-	const char	*s = (const char *)src;
+	const char	*s;
 	int			i;
 
 	d = (char *)dest;
+	s = (const char *)src;
 	i = 0;
-	//printf("s+count=%p, s=%p, d=%p\n", s+count, s, d);
 	if (!dest && !src)
-	return (NULL);
-	if (s + count > d)
+		return (NULL);
+	if (d > s)
 	{
-		//printf("PATRAS\n");
-		i = count - 1;
-		while (i >= 0)
-		{
-			d[i] = s[i];
-			i--;
-		}
+		while (count--)
+			d[count] = s[count];
 	}
 	else
 	{
 		while (i < (int)count)
 		{
-			//printf("PALANTE\n");
 			d[i] = s[i];
 			i++;
 		}
@@ -45,14 +39,25 @@ void	*ft_memmove(void *dest, const void *src, size_t count)
 	return (dest);
 }
 
-/*int	main(void)
+/* int	main(void)
 {
 	char dest[21] = "a shiny white sphere";
-	char *src = dest + 2;
-	ft_memmove(dest + 8, src, 11);
+	char src = dest + 2; 
+	//ft_memmove(dest + 8, src, 11);
 	char    src[] = "lorem ipsum dolor sit amet";
     char    *dest;
 	dest = src + 1;
 	ft_memmove(src, dest, 8);
 	printf("%s\n", dest);
-}*/
+} */
+
+/* if (d > s)
+	{
+		i = count - 1;
+		while (i >= 0)
+		{
+			d[i] = s[i];
+			i--;
+		}
+	}
+ */
