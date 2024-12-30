@@ -1,14 +1,4 @@
-# include <stddef.h> // size_t
-# include <stdlib.h> // malloc
-# include <unistd.h> // write
-# include <fcntl.h>  // flags open
-# include <stdio.h> // printf
-
-typedef struct t_list
-{
-	void *content;
-	struct t_list *next;
-} t_list;
+#include "libft.h"
 
 t_list *ft_lstnew (void *content)
 {
@@ -20,7 +10,7 @@ t_list *ft_lstnew (void *content)
 	return new;
 }
 
-int main (void)
+/*int main (void)
 {
 	char *number = "hola";
 	int n = 5;
@@ -31,8 +21,7 @@ int main (void)
 	void *c = ll -> content;
 	printf("%s\n", (char *)c);
  	printf("%i\n", ((int *)(ll2->content))[0]);
-	/*accede al content de ll2 (que es un void *) lo castea a int *, lo agrupa con unos parentesis y ese conjunto lo desreferencia con los [0]*/
+	//accede al content de ll2 (que es un void *) lo castea a int *, lo agrupa con unos parentesis y ese conjunto lo desreferencia con los [0]
 	printf("%i\n", *(int *)(ll2->content));
-	/*accede al content de ll2 (que es un void *) lo castea a int * y lo desreferencia (dada una posición de memoria, leer el contenido de la posición de memoria) utilizando el '*' del principio*/
-	
-}
+	//accede al content de ll2 (que es un void *) lo castea a int * y lo desreferencia (dada una posición de memoria, leer el contenido de la posición de memoria) utilizando el '*' del principio
+}*/
