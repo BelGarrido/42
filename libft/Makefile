@@ -37,7 +37,14 @@ SRC = ft_atoi.c \
 	ft_tolower.c \
 	ft_toupper.c
 
+SRCB = ft_lstnew.c \
+        ft_lstsize.c \
+		ft_lstlast.c \
+		ft_lstdelone.c
+
+
 cBJ = $(SRC:.c=.o)
+cBJB = $(SRCB:.c=.o)
 
 all: $(NAME)
 
@@ -47,10 +54,15 @@ $(NAME): $(cBJ)
 %c: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+bonus: $(cBJ) $(cBJB)
+	ar rcs $(NAME) $(cBJ) $(cBJB)
+
 clean:
-	rm -f $(cBJ)
+	rm -f $(cBJ) $(cBJB)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+
