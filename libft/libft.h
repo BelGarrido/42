@@ -19,6 +19,12 @@
 # include <fcntl.h>  // flags open
 # include <stdio.h> // printf
 
+typedef struct t_list
+{
+	void *content;
+	struct t_list *next;
+} t_list;
+
 int		ft_atoi(const char *string);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t num, size_t element_size);
@@ -28,6 +34,10 @@ int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
 char	*ft_itoa(int n);
+void	ft_lstdelone (t_list *lst, void (*del)(void *));
+t_list	*ft_lstlast (t_list *lst);
+t_list	*ft_lstnew (void *content);
+int		ft_lstsize (t_list *lst);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *str1, const void *str2, size_t n);
 void	*ft_memcpy(void *dest_str, const void *src_str, size_t n);
