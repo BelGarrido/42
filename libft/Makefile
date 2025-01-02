@@ -42,7 +42,9 @@ SRCB = ft_lstnew.c \
 		ft_lstlast.c \
 		ft_lstdelone.c \
 		ft_lstadd_front.c \
-		ft_lstadd_back.c
+		ft_lstadd_back.c \
+		ft_lstiter.c \
+		ft_lstclear.c
 
 
 cBJ = $(SRC:.c=.o)
