@@ -29,8 +29,8 @@ void	*ft_memset(void *ptr, int x, size_t n)
 
 /*int main (){
 
-    char ptr[] = "hola anita";
-    char ptr_l[] = "hola anita";
+    char ptr[] = "hola mundo";
+    char ptr_l[] = "hola mundo";
     ft_memset(ptr+2, 'A', 3);
     printf("%s\n", ptr);
     memset(ptr_l+2, 'A', 3);

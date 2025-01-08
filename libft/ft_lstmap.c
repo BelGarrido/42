@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/07 14:33:15 by marvin            #+#    #+#             */
-/*   Updated: 2025/01/07 14:33:15 by marvin           ###   ########.fr       */
+/*   Created: 2025/01/08 11:17:18 by anagarri          #+#    #+#             */
+/*   Updated: 2025/01/08 11:17:18 by anagarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/* #include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <stdio.h> */
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {

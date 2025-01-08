@@ -29,7 +29,7 @@ void	ft_putendl_fd(char *s, int fd)
 
 /*int	main(void)
 {	
-	char *string = "holi ruben";
+	char *string = "holi mundo";
 	int fd = open("./prueba.txt", O_WRONLY);
 	ft_putendl_fd(string, fd);
 }*/
