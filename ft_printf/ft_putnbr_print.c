@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_print_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putnbr(int n, int *count)
+void	ft_putnbr_print(int n, int *count)
 {
 	char	char_num;
 	int		num;
@@ -21,30 +21,37 @@ void	ft_putnbr(int n, int *count)
 	if (n == -2147483648)
 	{
 		write (1, "-2147483648", 11);
+		(*count)++;
 		return ;
 	}
 	if (n < 0)
 	{
 		write (1, "-", 1);
+		(*count)++;
 		n = -n;
 	}
 	if (n < 10)
 	{
 		char_num = n + 48;
 		write (1, &char_num, 1);
+		(*count)++;
 		return ;
 	}
 	num = n % 10;
 	n = n / 10;
 	char_num = num + 48;
-	ft_putnbr(n);
+	ft_putnbr_print(n, count);
+	(*count)++;
 	write (1, &char_num, 1);
 }
 
-/*int	main(void)
+/* int	main(void)
 {
 	int	number;
-	int fd = open("./prueba.txt", O_RDWR);
 	number = -1256563;
-	ft_putnbr_fd(number, fd);
-}*/
+	int count = 0;
+	ft_putnbr_print(number, &count);
+	printf ("\n");
+	printf ("%d", count);
+	printf ("\n");
+} */

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putstr_print.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,13 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <stddef.h> // size_t
-# include <stdlib.h> // malloc
-# include <unistd.h> // write
-# include <fcntl.h>  // flags open
-# include <stdio.h> // printf
+#include "ft_printf.h"
 
-void	ft_putstr(char *s, int *count)
+void	ft_putstr_print(char *s, int *count)
 {
 	int	i;
 
@@ -25,15 +21,15 @@ void	ft_putstr(char *s, int *count)
 	{
 		write (1, &s[i], 1);
 		i++;
-		count++;
+		(*count)++;
 	}
 }
 
-int	main(void)
+/* int	main(void)
 {	
 	char *string = "hola";
 	int count = 0;
-	int fd = open("./prueba.txt", O_WRONLY);
-	ft_putstr(string, &count);
-	printf ("%i", count);
-}
+	ft_putstr_print(string, &count);
+	printf ("%d", count);
+	printf ("\n");
+} */

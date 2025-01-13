@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putchar_print.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,15 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putchar_print(char c, int *count)
 {
-	write (fd, &c, 1);
+	write (1, &c, 1);
+	(*count)++;
 }
 
-/*int	main(void)
+/* int	main(void)
 {	
-	int fd = open("prueba.txt", O_RDWR);
-	ft_putchar_fd('B', fd);
-}*/
+	int count = 0;
+	ft_putchar_print('B', &count);
+	printf ("%d", count);
+} */
