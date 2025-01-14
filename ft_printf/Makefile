@@ -6,7 +6,7 @@ SRC = ft_putchar_print.c \
 	ft_putstr_print.c \
 	ft_putuint_print.c \
 	ft_putptr_print.c \
-	ft_puthexupper_print.c \
+	ft_puthexup_print.c \
 	ft_puthexlow_print.c \
 	ft_printf.c
 

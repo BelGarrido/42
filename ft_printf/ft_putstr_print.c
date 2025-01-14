@@ -16,6 +16,12 @@ void	ft_putstr_print(char *s, int *count)
 {
 	int	i;
 
+	if(!s)
+	{
+		write (1,"(null)",6);
+		(*count) = (*count)+6;
+		return ;
+	}
 	i = 0;
 	while (s[i] != '\0')
 	{

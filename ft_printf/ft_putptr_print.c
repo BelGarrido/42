@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putptr_print.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:26:38 by anagarri          #+#    #+#             */
-/*   Updated: 2025/01/14 13:11:10 by anagarri         ###   ########.fr       */
+/*   Updated: 2025/01/14 17:00:43 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+/* #include "ft_printf.h"
 
 void	ft_putptr_print(void *ptr, int *count)
 {
 	
 }
+ */

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexupper_print.c                             :+:      :+:    :+:   */
+/*   ft_puthexup_print.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-void	ft_puthexupper_print(unsigned int x, int *count)
+void	ft_puthexup_print(unsigned int x, int *count)
 {
-	int		remainder;
+	unsigned int		remainder;
 	char	char_num;
 
 	remainder = x % 16;
@@ -38,17 +38,18 @@ void	ft_puthexupper_print(unsigned int x, int *count)
 		(*count)++;
 		return ;
 	}
-	ft_puthexupper_print(x, count);
+	ft_puthexup_print(x, count);
 	(*count)++;
 	write (1, &char_num, 1);
 }
 
 /* int	main(void)
 {
-	unsigned int number = 960;
+	unsigned int number = 10;
 	int count = 0;
-	ft_puthexupper_print(960, &count);
+	ft_puthexup_print(9223372036854775807LL, &count);
 	printf("\n");
 	//printf("hexadecimal number: %x\n", number);
 	printf("%d", count);
+	printf("\n");
 } */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:44:40 by anagarri          #+#    #+#             */
-/*   Updated: 2025/01/14 14:42:39 by anagarri         ###   ########.fr       */
+/*   Updated: 2025/01/14 18:07:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ static void ft_print_format(va_list args, const char *str, int *count)
 	{
 		ft_putuint_print(va_arg(args, unsigned int), count);
 	}
-	else if (*str == 'x' || *str == 'X')
+	else if (*str == 'x')
 	{
 		ft_puthexlow_print(va_arg(args, unsigned int), count);
 	}
 	else if (*str == 'X')
 	{
-		ft_puthexupper_print(va_arg(args, unsigned int), count);
+		ft_puthexup_print(va_arg(args, unsigned int), count);
 	}
 	else if (*str == 'c')
 	{
@@ -72,15 +72,22 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return count;
 }
- 
+/*  
 int main()
 {	
 	char *text = "mundo";
-	int number = 1234;
-	int count = ft_printf("hola %s estamos en %X\n", text, number);
-	int count2 = printf("hola %s estamos en %X\n", text, number);
+	int number = -11;
+	int count = ft_printf("hola %x estamos en %X\n", number, number);
+	int count2 = printf("hola %x estamos en %X\n", number, number);
 	ft_printf("count: %i\n", count);
 	ft_printf("count2: %i\n", count2);
+	printf("\n");
+	int count3 = printf(" NULL %s NULL ", NULL);
+	printf("\n");
+	int count4 = ft_printf(" NULL %s NULL ", NULL);
+	printf("\n");
+	ft_printf("count3: %i\n", count3);
+	ft_printf("count4: %i\n", count4);
 	//int result = printf("Sentence to know how many %s\n", "characters were written");
     //printf("%d characters were written", result);
-}
+} */

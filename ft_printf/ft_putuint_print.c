@@ -24,7 +24,7 @@ void	ft_putuint_print(unsigned int n, int *count)
 		n = (unsigned int)n;
 		printf("n = %u", n);
 	} */
-	if (n < 10 && n >= 0)
+	if (n < 10)
 	{
 		char_num = n + 48;
 		write (1, &char_num, 1);
