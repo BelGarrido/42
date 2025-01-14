@@ -2,25 +2,29 @@
 
 //no se comporta igual que el original, pero funciona
 
-void	ft_putuint_print(int n, int *count)
+void	ft_putuint_print(unsigned int n, int *count)
 {
 	char	char_num;
-	int		num;
+	unsigned int		num;
 
 	num = 0;
 	//tengo que ver que hacer con esta parte
-	if (n == -2147483648)
+	if ((int)n == -2147483648)
 	{
-		write (1, "2147483648", 11);
-		(*count)++;
+		write (1, "2147483648", 10);
+		(*count) = (*count) + 10;
 		return ;
 	}
 	//y con esta
-	if (n < 0)
+/* 	if (n < 0)
 	{
-		n = -n;
-	}
-	if (n < 10)
+		unsigned int un;
+
+		un = (unsigned int)n;
+		n = (unsigned int)n;
+		printf("n = %u", n);
+	} */
+	if (n < 10 && n >= 0)
 	{
 		char_num = n + 48;
 		write (1, &char_num, 1);
@@ -38,7 +42,7 @@ void	ft_putuint_print(int n, int *count)
 /* int	main(void)
 {
 	int	number;
-	number = -1256563;
+	number = -1;
 	int count = 0;
 	ft_putuint_print(number, &count);
 	printf ("\n");

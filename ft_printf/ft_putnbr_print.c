@@ -21,7 +21,7 @@ void	ft_putnbr_print(int n, int *count)
 	if (n == -2147483648)
 	{
 		write (1, "-2147483648", 11);
-		(*count)++;
+		(*count) = (*count) + 11;
 		return ;
 	}
 	if (n < 0)

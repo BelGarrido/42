@@ -12,10 +12,12 @@
 void	ft_putchar_print(char c, int *count);
 //print %s (string)
 void	ft_putstr_print(char *s, int *count);
-//print %i (int)
+//print %i and %d (int)
 void	ft_putnbr_print(int n, int *count);
 //print %u (unsigned int)
-void	ft_putuint_print(int n, int *count);
+void	ft_putuint_print(unsigned int n, int *count);
+//print %p (pointers)
+void	ft_putptr_print(void *, int *count);
 //ft_printf
 int		ft_printf(const char *format, ...);
 

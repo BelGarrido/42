@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:44:40 by anagarri          #+#    #+#             */
-/*   Updated: 2025/01/13 21:28:54 by marvin           ###   ########.fr       */
+/*   Updated: 2025/01/14 11:59:18 by anagarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void ft_print_format(va_list args, const char *str, int *count)
 	{
 		ft_putstr_print(va_arg(args, char*), count);
 	}
-	else if (*str == 'i')
+	else if (*str == 'i' || *str == 'd')
 	{
 		ft_putnbr_print(va_arg(args, int), count);
 	}
@@ -36,7 +36,7 @@ static void ft_print_format(va_list args, const char *str, int *count)
 	}
 	else if (*str == 'p')
 	{
-		//ft_putptr(va_arg(args, void *));
+		ft_putptr_print(va_arg(args, void *), count);
 	}
 	
 }
@@ -54,7 +54,10 @@ int	ft_printf(const char *format, ...)
 		{
 			//check what type of element is the format[i + 1]
 			i++;
-			ft_print_format(args, &format[i], &count);
+			if (format[i] == '%')
+				ft_putchar_print('%', &count);
+			else 
+				ft_print_format(args, &format[i], &count);
 		}
 		else
 		{
@@ -65,15 +68,15 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return count;
 }
-
-/* int main()
+ 
+int main()
 {	
 	char *text = "mundo";
-	int number = 2025;
-	int count = ft_printf("hola %s estamos en %i\n", text, number);
-	int count2 = printf("hola %s estamos en %i\n", text, number);
+	int number = -1;
+	int count = ft_printf("hola %p estamos en %u\n", text, number);
+	int count2 = printf("hola %p estamos en %u\n", text, number);
 	ft_printf("count: %i\n", count);
 	ft_printf("count2: %i\n", count2);
 	//int result = printf("Sentence to know how many %s\n", "characters were written");
     //printf("%d characters were written", result);
-} */
+}
