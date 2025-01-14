@@ -6,7 +6,7 @@
 /*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 11:44:40 by anagarri          #+#    #+#             */
-/*   Updated: 2025/01/14 11:59:18 by anagarri         ###   ########.fr       */
+/*   Updated: 2025/01/14 14:42:39 by anagarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ static void ft_print_format(va_list args, const char *str, int *count)
 	}
 	else if (*str == 'x' || *str == 'X')
 	{
-		//ft_puthex(va_arg(args, unsigned int));
+		ft_puthexlow_print(va_arg(args, unsigned int), count);
+	}
+	else if (*str == 'X')
+	{
+		ft_puthexupper_print(va_arg(args, unsigned int), count);
 	}
 	else if (*str == 'c')
 	{
@@ -36,7 +40,7 @@ static void ft_print_format(va_list args, const char *str, int *count)
 	}
 	else if (*str == 'p')
 	{
-		ft_putptr_print(va_arg(args, void *), count);
+		//ft_putptr_print(va_arg(args, void *), count);
 	}
 	
 }
@@ -72,9 +76,9 @@ int	ft_printf(const char *format, ...)
 int main()
 {	
 	char *text = "mundo";
-	int number = -1;
-	int count = ft_printf("hola %p estamos en %u\n", text, number);
-	int count2 = printf("hola %p estamos en %u\n", text, number);
+	int number = 1234;
+	int count = ft_printf("hola %s estamos en %X\n", text, number);
+	int count2 = printf("hola %s estamos en %X\n", text, number);
 	ft_printf("count: %i\n", count);
 	ft_printf("count2: %i\n", count2);
 	//int result = printf("Sentence to know how many %s\n", "characters were written");

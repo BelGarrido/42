@@ -17,7 +17,11 @@ void	ft_putnbr_print(int n, int *count);
 //print %u (unsigned int)
 void	ft_putuint_print(unsigned int n, int *count);
 //print %p (pointers)
-void	ft_putptr_print(void *, int *count);
+void	ft_putptr_print(void *ptr, int *count);
+//print %x (hexadecimal)
+void	ft_puthexlow_print(unsigned int x, int *count);
+//print %X (hexadecimal)
+void	ft_puthexupper_print(unsigned int x, int *count);
 //ft_printf
 int		ft_printf(const char *format, ...);
 
