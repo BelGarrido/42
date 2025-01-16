@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_print.c                                     :+:      :+:    :+:   */
+/*   ft_putstr_print.c                                   :+:      :+:    :+:  */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -16,10 +16,10 @@ void	ft_putstr_print(char *s, int *count)
 {
 	int	i;
 
-	if(!s)
+	if (!s)
 	{
-		write (1,"(null)",6);
-		(*count) = (*count)+6;
+		write (1, "(null)", 6);
+		(*count) = (*count) + 6;
 		return ;
 	}
 	i = 0;

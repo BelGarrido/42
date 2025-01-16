@@ -14,33 +14,31 @@
 
 void	ft_puthexup_print(unsigned int x, int *count)
 {
-	unsigned int		remainder;
-	char	char_num;
+	unsigned int	remainder;
+	char			char_num;
 
 	remainder = x % 16;
-	x = x /16;
+	x = x / 16;
 	if (remainder > 9)
 		char_num = (remainder - 9) + 64;
 	else
 		char_num = remainder + 48;
 	if (x == 0)
-	{	
+	{
 		if (remainder > 9)
 		{
 			char_num = (remainder - 9) + 64;
-			write(1, &char_num, 1);
+			ft_putchar_print(char_num, count);
 		}
 		else
 		{
 			char_num = remainder + 48;
-			write(1, &char_num, 1);
+			ft_putchar_print(char_num, count);
 		}
-		(*count)++;
 		return ;
 	}
 	ft_puthexup_print(x, count);
-	(*count)++;
-	write (1, &char_num, 1);
+	ft_putchar_print(char_num, count);
 }
 
 /* int	main(void)

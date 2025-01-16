@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_print_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_print_fd.c                                :+:      :+:    :+:  */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -15,9 +15,7 @@
 void	ft_putnbr_print(int n, int *count)
 {
 	char	char_num;
-	int		num;
 
-	num = 0;
 	if (n == -2147483648)
 	{
 		write (1, "-2147483648", 11);
@@ -26,8 +24,7 @@ void	ft_putnbr_print(int n, int *count)
 	}
 	if (n < 0)
 	{
-		write (1, "-", 1);
-		(*count)++;
+		ft_putchar_print('-', count);
 		n = -n;
 	}
 	if (n < 10)
@@ -37,9 +34,8 @@ void	ft_putnbr_print(int n, int *count)
 		(*count)++;
 		return ;
 	}
-	num = n % 10;
+	char_num = (n % 10) + 48;
 	n = n / 10;
-	char_num = num + 48;
 	ft_putnbr_print(n, count);
 	(*count)++;
 	write (1, &char_num, 1);

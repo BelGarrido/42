@@ -1,29 +1,30 @@
-#include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putuint_print.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/15 15:02:21 by marvin            #+#    #+#             */
+/*   Updated: 2025/01/15 15:02:21 by marvin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-//no se comporta igual que el original, pero funciona
+
+#include "ft_printf.h"
 
 void	ft_putuint_print(unsigned int n, int *count)
 {
-	char	char_num;
-	unsigned int		num;
+	char			char_num;
+	unsigned int	num;
 
 	num = 0;
-	//tengo que ver que hacer con esta parte
 	if ((int)n == -2147483648)
 	{
 		write (1, "2147483648", 10);
 		(*count) = (*count) + 10;
 		return ;
 	}
-	//y con esta
-/* 	if (n < 0)
-	{
-		unsigned int un;
-
-		un = (unsigned int)n;
-		n = (unsigned int)n;
-		printf("n = %u", n);
-	} */
 	if (n < 10)
 	{
 		char_num = n + 48;
