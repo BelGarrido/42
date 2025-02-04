@@ -14,77 +14,64 @@
 
 char * get_next_line(int fd)
 {
-	static  t_list	* list;
-	char	* line;
+	static  t_list	*list;
+	char	*line;
+	
 	list = NULL;
 
 	//make sure everything is correct
 	if (fd < 0 || BUFFER_SIZE <= 0)
-	{
+	{	
+		printf("fd: %i\n", fd);
+		printf("BUFFER_SIZE: %i\n", BUFFER_SIZE);
 		printf("Error: Invalid file descriptor or BUFFER_SIZE\n");
 		return (NULL);
 	}
-
-	//copy from buffer to list
-	if (!copy_from_buffer(list, fd))
-		return (NULL)
-
+	printf("check-point #1\n");
 	//check if the list contains \n so far
-	if (contain_n(list) != 0)
+	//while(contain_n(list) == 0)
+	list = copy_from_buffer(list, fd);
+	/* printf("()check-point #777 list -> content:%c\n", list ->content); */
+	if(list == NULL)
+		printf("()check-point #666 list es NULL\n");
+		//aqui la list aun no es NULL
+	while(contain_n(list) == 0)
 	{	
-		//fetch the line from list
-		copy_to_string
-	}
-
-
-
-
-
-
-
-
-
-
-	bytes_read = read(fd, buffer, BUFFER_SIZE);
-	if (bytes_read <= 0)
-		return NULL;
-	buffer[bytes_read] = '\0'; // why bytes_read and not bytes_read + 1?
-	//line vacío?
-		//si -> copy buffer into line
-		//no -> append buffer into line 
-	line = (char *)malloc((bytes_read + 1) * sizeof (char));
-	if (!line)
-	{
-		return NULL;
-	}
- 	while (buffer[i] != '\0')
-	{	
-		if (line[i] == '\n')
+		printf("check-point #2\n");
+		//copy from buffer to list
+		if (!copy_from_buffer(list, fd))
+		{	
+			printf("check-point #3\n");
 			break;
-		line[i] = buffer[i];
-		i++;
+			//return (NULL);
+		}
 	}
-	line[i] = '\0';
-	return line;
+	printf("check-point #4\n");
+	//fetch the line from list
+	if(list == NULL)
+		printf("()check-point #5 list es NULL\n");
+	line = copy_to_string(list);
+	//printf("line: %s\n", line);
+	return(line);
 }
- 
+
+
 int main(void)
 {
 	int fd;
-	char * line;
-	int chars_read;
+	char *line;
 
-	fd = open("./text.txt", O_RDONLY);
-
+	fd = open("text.txt", O_RDONLY);
+	printf("fd: %i\n", fd);
 	line = get_next_line(fd);
-	printf("%s\n", line);
-
-	while ((line = get_next_line(fd)) != NULL)
-	{	
-		printf("%s\n", line);
+	printf("line: %s\n", line);
+	while (line != NULL)
+	{
+		printf("%s\n", line),
 		free(line);
+		get_next_line(fd);
 	}
 	close(fd);
 	return (0);
 }
-
+ 
