@@ -114,12 +114,13 @@ char *copy_to_string(t_list *list)
 	printf("()COPY_TO_STRING #4: after aux asignation\n");
 	line_to_print = (char *)malloc((size + 1) * sizeof(char));
 	printf("()COPY_TO_STRING #5: size %i\n", size);
+	aux2 = list;
 	while(list -> content != '\n')
 	{
 		printf("()COPY_TO_STRING #7 inside the important loop\n");
 		line_to_print[i] = list -> content;
 		printf("()COPY_TO_STRING #8 line_to_print: %s\n", line_to_print);
-		aux2 = list;
+		/* (?) */aux2 = list;
 		i++;
 		printf("()COPY_TO_STRING #8 i: %i\n", i);
 		list = list -> next; // el problema tiene que estar aqui
