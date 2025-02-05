@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef GET_NEXT_LINE_H
+#define GET_NEXT_LINE_H
+
 #include <fcntl.h>   // For open(), O_RDONLY, etc.
 #include <unistd.h>  // For read(), close(), etc.
 #include <stdlib.h>  // For malloc(), free(), etc.
@@ -18,10 +21,12 @@
 #ifndef BUFFER_SIZE
 #define BUFFER_SIZE 1  // Default buffer size
 
-typedef struct t_list
+#endif
+
+typedef struct s_list
 {
 	char			content;
-	struct t_list 	*next;
+	struct s_list 	*next;
 }	t_list;
 
 t_list	*copy_from_buffer(t_list *list, int fd);

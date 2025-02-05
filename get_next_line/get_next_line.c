@@ -16,7 +16,7 @@ char * get_next_line(int fd)
 {
 	static  t_list	*list;
 	char	*line;
-	
+	int		control;
 	list = NULL;
 
 	//make sure everything is correct
@@ -35,14 +35,19 @@ char * get_next_line(int fd)
 	if(list == NULL)
 		printf("()check-point #666 list es NULL\n");
 		//aqui la list aun no es NULL
+	
+	control = 0;
+
 	while(contain_n(list) == 0)
 	{	
 		printf("check-point #2\n");
+
 		//copy from buffer to list
 		if (!copy_from_buffer(list, fd))
 		{	
 			printf("check-point #3\n");
-			break;
+			control = 1;
+			break;//aqui esta el problema tambien
 			//return (NULL);
 		}
 	}
@@ -51,10 +56,14 @@ char * get_next_line(int fd)
 	if(list == NULL)
 		printf("()check-point #5 list es NULL\n");
 	line = copy_to_string(list);
-	//printf("line: %s\n", line);
-	return(line);
+	printf("line: %s\n", line);
+	if (control == 1)
+	{
+		return(NULL);
+	}
+	else
+		return(line);
 }
-
 
 int main(void)
 {
@@ -64,12 +73,12 @@ int main(void)
 	fd = open("text.txt", O_RDONLY);
 	printf("fd: %i\n", fd);
 	line = get_next_line(fd);
-	printf("line: %s\n", line);
+	//printf("MAIN() line: %s\n", line);
 	while (line != NULL)
 	{
-		printf("%s\n", line),
+		printf("MAIN() line: %s\n", line);
 		free(line);
-		get_next_line(fd);
+		line = get_next_line(fd);
 	}
 	close(fd);
 	return (0);

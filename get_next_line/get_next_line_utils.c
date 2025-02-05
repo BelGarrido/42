@@ -19,6 +19,7 @@ t_list * copy_from_buffer(t_list *list, int fd)
 	printf("()COPY_FROM_BUFFER #1\n");
 	char *buffer;
 	int	i;
+
 	buffer = malloc(BUFFER_SIZE * sizeof(char));
 	if (!buffer)
 		return (NULL);
@@ -27,13 +28,17 @@ t_list * copy_from_buffer(t_list *list, int fd)
 	bytes_read = read (fd, buffer, BUFFER_SIZE);
 	printf("()COPY_FROM_BUFFER #2 bytes_read:%i\n", bytes_read);
 	if (bytes_read <= 0)
+	{
+		printf("()bytes read NUUUUUUUUUUUUUUUUUUUUL:%i\n", bytes_read);
 		return (NULL);
+	}
 	i = 0;
 	while (bytes_read > i) // >=
 	{
 		ft_lstadd_back(&list, ft_lstnew(buffer[i]));
 		i++;
 	}
+
 	printf("()COPY_FROM_BUFFER #3 list -> content:%c\n", list ->content);
 	return (list);
 }
@@ -43,7 +48,14 @@ t_list * copy_from_buffer(t_list *list, int fd)
 int	contain_n(t_list *list)
 {	
 	t_list * aux;
+
+	if (list == NULL)
+    {
+        printf("()CONTAIN_N: list is NULL\n");
+        return 0;  // No newline, list is empty
+    }
 	// he cmabiado list por un aux porque sospecho que la lista se queda al final (?)
+	
 	aux = list;
 	printf("()CONTAIN_N #1: outside the loop\n");
 	while (aux != NULL)
@@ -107,13 +119,13 @@ char *copy_to_string(t_list *list)
 		printf("()COPY_TO_STRING #2: list es nulo\n");
 	while(aux != NULL && aux -> content != '\n')
 	{	
-		printf("()COPY_TO_STRING #3: inside the loop\n");
+		printf("()COPY_TO_STRING #3: counting size\n");
 		aux = aux -> next;
 		size++;
 	}
-	printf("()COPY_TO_STRING #4: after aux asignation\n");
+	printf("()COPY_TO_STRING #4: after counting size\n");
 	line_to_print = (char *)malloc((size + 1) * sizeof(char));
-	printf("()COPY_TO_STRING #5: size %i\n", size);
+	printf("()COPY_TO_STRING #5: size = %i\n", size);
 	aux2 = list;
 	while(list -> content != '\n')
 	{
@@ -123,7 +135,14 @@ char *copy_to_string(t_list *list)
 		/* (?) */aux2 = list;
 		i++;
 		printf("()COPY_TO_STRING #8 i: %i\n", i);
-		list = list -> next; // el problema tiene que estar aqui
+		if (i < size)
+		{
+			printf("()COPY_TO_STRING #8 i: %i\n", i);
+			printf("()COPY_TO_STRING #8 size: %i\n", size);
+			list = list -> next; // el problema tiene que estar aqui
+		}
+		else
+			break;
 		//free(aux);
 	}
 	line_to_print[i] = '\0';

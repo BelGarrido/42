@@ -1,3 +1,2 @@
-hola
-que 
-tal
+hola que tal
+hoy es miercoles
