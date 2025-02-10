@@ -38,8 +38,10 @@ t_list * copy_from_buffer(t_list *list, int fd)
 		ft_lstadd_back(&list, ft_lstnew(buffer[i]));
 		i++;
 	}
-
-	printf("()COPY_FROM_BUFFER #3 list -> content:%c\n", list ->content);
+	if(bytes_read < BUFFER_SIZE){
+		ft_lstadd_back(&list, ft_lstnew('\n'));
+		return (NULL);
+	}
 	return (list);
 }
 
@@ -52,10 +54,8 @@ int	contain_n(t_list *list)
 	if (list == NULL)
     {
         printf("()CONTAIN_N: list is NULL\n");
-        return 0;  // No newline, list is empty
-    }
-	// he cmabiado list por un aux porque sospecho que la lista se queda al final (?)
-	
+        return 2;  // No newline, list is empty (REVISAR!)
+    }	
 	aux = list;
 	printf("()CONTAIN_N #1: outside the loop\n");
 	while (aux != NULL)
@@ -103,15 +103,14 @@ t_list	*ft_lstnew(char buffer_content)
 	return (new);
 }
 
-char *copy_to_string(t_list *list)
+char *copy_to_string(t_list **list)
 {
 	t_list	*aux;
-	t_list	*aux2;
 	char 	*line_to_print;
 	int		size;
 	int		i;
 
-	aux = list;
+	aux = *list;
 	size = 0;
 	i = 0;
 	printf("()COPY_TO_STRING #1: outside the loop\n");
@@ -126,33 +125,46 @@ char *copy_to_string(t_list *list)
 	printf("()COPY_TO_STRING #4: after counting size\n");
 	line_to_print = (char *)malloc((size + 1) * sizeof(char));
 	printf("()COPY_TO_STRING #5: size = %i\n", size);
-	aux2 = list;
-	while(list -> content != '\n')
+	//aux2 = list;
+	t_list temp;
+	while(*list != NULL && (*list) -> content != '\n')
 	{
-		printf("()COPY_TO_STRING #7 inside the important loop\n");
-		line_to_print[i] = list -> content;
+		line_to_print[i] = (*list) -> content;
 		printf("()COPY_TO_STRING #8 line_to_print: %s\n", line_to_print);
-		/* (?) */aux2 = list;
+		/* (?) *///aux2 = list;
 		i++;
 		printf("()COPY_TO_STRING #8 i: %i\n", i);
 		if (i < size)
 		{
-			printf("()COPY_TO_STRING #8 i: %i\n", i);
 			printf("()COPY_TO_STRING #8 size: %i\n", size);
-			list = list -> next; // el problema tiene que estar aqui
+			/*Aquí deberías liberar memoria (tanto el content como el nodo)*/
+			/*temp = aux2;*/
+			*list = (*list) -> next; // el problema tiene que estar aqui
+			/*lstdelone(temp, free)*/
 		}
 		else
 			break;
 		//free(aux);
 	}
+	*list = (*list) -> next;
+	if((*list) -> content == '\n'){
+		*list = (*list) -> next;
+	}
+	/*aux2 = aux2 -> next para saltar el /n*/
+	/*list = aux2*/
+	/*En realidad puedes quitar el aux2 y usar solamente list*/
 	line_to_print[i] = '\0';
 	printf("()COPY_TO_STRING #9: ¿line_to_print? %s\n", line_to_print);
 	return (line_to_print);
 }
 
-/* while(contain_n(list) == 0){
-	if (!copy_from_buffer(list, fd))
-		return (NULL)
+void print_list(t_list *list)
+{
+	t_list *a = list;
+	printf("list content: [");
+	while(a != NULL){
+		printf("%c, ", a -> content);
+		a = a -> next;
+	}
+	printf("]\n");
 }
-
-copy_to_string() */

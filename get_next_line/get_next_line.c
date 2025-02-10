@@ -17,52 +17,58 @@ char * get_next_line(int fd)
 	static  t_list	*list;
 	char	*line;
 	int		control;
-	list = NULL;
+	//list = NULL;
 
 	//make sure everything is correct
 	if (fd < 0 || BUFFER_SIZE <= 0)
 	{	
-		printf("fd: %i\n", fd);
-		printf("BUFFER_SIZE: %i\n", BUFFER_SIZE);
 		printf("Error: Invalid file descriptor or BUFFER_SIZE\n");
 		return (NULL);
 	}
 	printf("check-point #1\n");
 	//check if the list contains \n so far
 	//while(contain_n(list) == 0)
-	list = copy_from_buffer(list, fd);
+	if (list == NULL)
+	{
+		printf("list = copy_from_buffer");
+		list = copy_from_buffer(list, fd);
+	}
+	else
+		copy_from_buffer(list, fd);
 	/* printf("()check-point #777 list -> content:%c\n", list ->content); */
-	if(list == NULL)
+	if(list == NULL){
 		printf("()check-point #666 list es NULL\n");
-		//aqui la list aun no es NULL
-	
+		return (NULL);
+	}
 	control = 0;
-
+	print_list(list);
 	while(contain_n(list) == 0)
 	{	
 		printf("check-point #2\n");
-
 		//copy from buffer to list
 		if (!copy_from_buffer(list, fd))
 		{	
 			printf("check-point #3\n");
 			control = 1;
+			//print_list(list);
 			break;//aqui esta el problema tambien
 			//return (NULL);
 		}
+		print_list(list);
 	}
+	print_list(list);
 	printf("check-point #4\n");
 	//fetch the line from list
 	if(list == NULL)
 		printf("()check-point #5 list es NULL\n");
-	line = copy_to_string(list);
-	printf("line: %s\n", line);
 	if (control == 1)
 	{
 		return(NULL);
 	}
 	else
-		return(line);
+		line = copy_to_string(&list);
+	printf("line: %s\n", line);
+	return(line);
 }
 
 int main(void)
@@ -71,7 +77,6 @@ int main(void)
 	char *line;
 
 	fd = open("text.txt", O_RDONLY);
-	printf("fd: %i\n", fd);
 	line = get_next_line(fd);
 	//printf("MAIN() line: %s\n", line);
 	while (line != NULL)

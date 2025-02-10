@@ -19,7 +19,7 @@
 #include <stdio.h>   // For debugging with printf(), perror(), etc.
 
 #ifndef BUFFER_SIZE
-#define BUFFER_SIZE 1  // Default buffer size
+#define BUFFER_SIZE 5  // Default buffer size
 
 #endif
 
@@ -29,10 +29,13 @@ typedef struct s_list
 	struct s_list 	*next;
 }	t_list;
 
+
+
 t_list	*copy_from_buffer(t_list *list, int fd);
 int		contain_n(t_list *list);
 void	ft_lstadd_back(t_list **list, t_list *new);
 t_list	*ft_lstnew(char buffer_content);
-char	*copy_to_string(t_list *list);
+char	*copy_to_string(t_list **list);
+void	print_list(t_list *list);
 
 #endif
