@@ -30,6 +30,7 @@ t_list * copy_from_buffer(t_list *list, int fd)
 	if (bytes_read <= 0)
 	{
 		printf("()bytes read NUUUUUUUUUUUUUUUUUUUUL:%i\n", bytes_read);
+		list = NULL;
 		return (NULL);
 	}
 	i = 0;
