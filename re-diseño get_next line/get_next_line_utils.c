@@ -17,18 +17,40 @@
 
 //leer datos con read()
 
-int	found_new_line(t_list *list);
+int	found_new_line(t_list *list)
+{
+	int i;
+
+	i = 0;
+
+	if(list == NULL)
+		return (0);
+
+	while(list -> content[i] != '\0')
+	{
+		printf("--> found_new_line: check-point #1\n");
+		if (list -> content[i] == '\n')
+		{
+			return 0;
+		}
+		i++;
+	}
+	return 1;
+}
 
 t_list	*find_last_node(t_list *lst)
 {
+	printf("--> find_last_node: check-point #1\n");
 	if (lst == NULL)
 		return (NULL);
 	while (lst -> next != NULL)
 		lst = lst -> next;
+	printf("--> find_last_node: check-point #2\n");
 	return (lst);
 }
 
-void	print_list(t_list *list){
+void	print_list(t_list *list)
+{
 	t_list *a = list;
 	printf("list content: [");
 	while(a != NULL){
@@ -44,7 +66,7 @@ void	write_str(t_list *list, char *line)
 	int	j;
 
 	if (list == NULL)
-		return (0);
+		return ;
 	j = 0;
 	while(list != NULL)
 	{
@@ -94,4 +116,33 @@ int	len_to_newline(t_list *list)
 	return (len);
 }
 
-void	dealloc()
+void	dealloc(t_list **list, t_list *newnode, char *buffer) /*no entiendo los dobles punteros de las t_list*/
+{
+	t_list	*temp;
+
+	if (*list == NULL)
+		return ;
+	while(*list)
+	{
+		printf("--> dealloc: check-point #1\n");
+		
+		temp = (*list)->next;
+		printf("--> dealloc: check-point #2\n");
+		free((*list)->content);
+		printf("--> dealloc: check-point #3\n");
+		free(*list);
+		(*list) = temp;
+	}
+	printf("--> dealloc: check-point #2\n");
+	*list = NULL;
+	if (newnode ->content[0] != '\0')
+	{
+		*list = newnode;
+		// free(buffer); aqui no puedo liberar el buffer porque newnode->content esta apuntando al buffer right?
+	}
+	else
+	{
+		free(buffer);
+		free(newnode);
+	}
+}

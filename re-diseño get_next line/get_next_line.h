@@ -29,12 +29,16 @@ typedef struct s_list
 	struct s_list 	*next;
 }	t_list;
 
-
-
-t_list	*copy_from_buffer(t_list *list, int fd);
-int		contain_n(t_list *list);
-void	ft_lstadd_back(t_list **list, t_list *new);
-t_list	*ft_lstnew(char *buffer_content);
-char	*copy_to_string(t_list **list);
+void	copy_from_buffer(t_list **list, int fd);
+void	append(t_list **list, char *buffer);
+char	*copy_to_string(t_list *list);
+void	clean_list(t_list **list);
+char	*get_next_line(int fd);
+int		found_new_line(t_list *list);
+t_list	*find_last_node(t_list *lst);
+void	print_list(t_list *list);
+void	write_str(t_list *list, char *line);
+int		len_to_newline(t_list *list);
+void	dealloc(t_list **list, t_list *newnode, char *buffer);
 
 #endif
