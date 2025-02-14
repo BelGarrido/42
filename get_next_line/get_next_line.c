@@ -5,85 +5,70 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: anagarri <anaigd93@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/17 10:59:58 by anagarri          #+#    #+#             */
-/*   Updated: 2025/01/17 10:59:58 by anagarri         ###   ########.fr       */
+/*   Created: 2025/01/17 11:00:11 by anagarri          #+#    #+#             */
+/*   Updated: 2025/02/13 23:36:37 by anagarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char * get_next_line(int fd)
-{
-	static  t_list	*list;
-	char	*line;
-	int		control;
-	//list = NULL;
+//NUEVO
 
-	//make sure everything is correct
-	if (fd < 0 || BUFFER_SIZE <= 0)
-	{	
-		printf("Error: Invalid file descriptor or BUFFER_SIZE\n");
-		return (NULL);
-	}
-	printf("check-point #1\n");
-	//check if the list contains \n so far
-	//while(contain_n(list) == 0)
-	if (list == NULL)
+char* get_next_line(int fd)
+{
+	static t_list *list;
+	char* line;
+	int size_until_n;
+	int bytes_read;
+
+	while((size_until_n = contain_n(list))==0) //si no hay \n = 0
 	{
-		printf("list = copy_from_buffer");
-		list = copy_from_buffer(list, fd);
-	}
-	else
-		copy_from_buffer(list, fd);
-	/* printf("()check-point #777 list -> content:%c\n", list ->content); */
-	if(list == NULL){
-		printf("()check-point #666 list es NULL\n");
-		return (NULL);
-	}
-	control = 0;
-	print_list(list);
-	while(contain_n(list) == 0)
-	{	
-		printf("check-point #2\n");
-		//copy from buffer to list
-		if (!copy_from_buffer(list, fd))
-		{	
-			printf("check-point #3\n");
-			control = 1;
-			//print_list(list);
-			break;//aqui esta el problema tambien
-			//return (NULL);
+		//print_list(list);
+		bytes_read = copy_from_buffer(&list, fd); // añade un \n al final cuando EOF
+		//print_list(list);
+		if (bytes_read < 0)
+			return NULL;
+		if(bytes_read < BUFFER_SIZE)
+		{
+			//Para actualizar el valor de size_until_n cuando EOF
+			//printf("bytes_read < BUFFER_SIZE\n");
+			size_until_n = contain_n(list);
+			//printf("size_until_n: %i\n", size_until_n);
+			break;
 		}
-		print_list(list);
 	}
-	print_list(list);
-	printf("check-point #4\n");
-	//fetch the line from list
-	if(list == NULL)
-		printf("()check-point #5 list es NULL\n");
-	if (control == 1)
-	{
-		return(NULL);
-	}
-	else
-		line = copy_to_string(&list);
-	printf("line: %s\n", line);
-	return(line);
+
+	//HAY UN FALLO SI LEE DOS /n en el mismo buffer
+/*	int size_until_n = 0;
+	int bytes_read;
+	while (size_until_n == 0){
+		bytes_read = copy_from_buffer(list, fd);
+		if(bytes_read < BUFFER_SIZE){ //EOF
+			if (bytes_read < 0) //ERROR
+				return NULL;
+			break;
+		}
+		size_until_n = contain_n(list);
+	}*/
+
+	line = copy_to_string(&list, size_until_n);
+	return line;
 }
 
 int main(void)
 {
 	int fd;
 	char *line;
-
+	int counter = 0;
 	fd = open("text.txt", O_RDONLY);
 	line = get_next_line(fd);
-	//printf("MAIN() line: %s\n", line);
-	while (line != NULL)
+	//printf("MAIN() line: %i\n", fd);
+	while (line != NULL && counter < 10)
 	{
 		printf("MAIN() line: %s\n", line);
 		free(line);
 		line = get_next_line(fd);
+		counter++;
 	}
 	close(fd);
 	return (0);
