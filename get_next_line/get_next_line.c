@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anagarri <anaigd93@gmail.com>              +#+  +:+       +#+        */
+/*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 11:00:11 by anagarri          #+#    #+#             */
-/*   Updated: 2025/02/13 23:36:37 by anagarri         ###   ########.fr       */
+/*   Updated: 2025/02/14 14:06:35 by anagarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,25 +52,28 @@ char* get_next_line(int fd)
 	}*/
 
 	line = copy_to_string(&list, size_until_n);
+	//esto lo que hace es que cuando es
+	/* if(bytes_read < BUFFER_SIZE)
+		list = NULL; */
+			
 	return line;
 }
 
-int main(void)
+/* int main(void)
 {
 	int fd;
 	char *line;
-	int counter = 0;
-	fd = open("text.txt", O_RDONLY);
+	//fd = open("text.txt", O_RDONLY);
+	fd = open("41_no_nl.txt", O_RDONLY);
 	line = get_next_line(fd);
 	//printf("MAIN() line: %i\n", fd);
-	while (line != NULL && counter < 10)
+	while (line != NULL)
 	{
 		printf("MAIN() line: %s\n", line);
 		free(line);
 		line = get_next_line(fd);
-		counter++;
 	}
 	close(fd);
 	return (0);
-}
+} */
  

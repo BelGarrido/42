@@ -14,44 +14,43 @@
 
 int contain_n(t_list *list)
 {
+	int		size;
+	t_list	*aux;
+	
+	size = 0;
+	aux = list;
 	if (!list)
-		return 0;
-	int size = 0;
-	t_list *aux = list;
+		return (0);
 	//printf("LIST CONTENT: ");
-	while(aux!=NULL)
+	while(aux != NULL)
 	{
-		
 		//printf("%c", aux->content);
-		
-		if(aux->content =='\n')
-		{
+		if(aux->content == '\n')
 			return size + 1; //vigilar si este +1 es necesario
-		}
 		aux = aux -> next;
 		size++;
 	}
 	//printf("\n");
-	return 0;
+	return (0);
 }
-
 
 //Si no modifica la lista, pasarla como doble puntero y manejarla así
 int copy_from_buffer(t_list **list, int fd)
 {
-	char *buffer = (char *)malloc(BUFFER_SIZE*sizeof(char));
+	char	*buffer;
+	int		bytes_read;
+	int		i;
+
+	buffer = (char *)malloc(BUFFER_SIZE * sizeof(char));
 	if (!buffer)
-        return -1; // Error handling
-	int bytes_read;
-	int i = 0;
-
-	bytes_read = read(fd,buffer,BUFFER_SIZE);
-
-	while(i<bytes_read){
+		return (-1); // Error handling
+	i = 0;
+	bytes_read = read(fd, buffer, BUFFER_SIZE);
+	while (i<bytes_read)
+	{
 		ft_lstadd_back(list, ft_lstnew(buffer[i]));
 		i++;
 	}
-
 	//ALTERNATIVE WHILE VERSION (GPT)
 	/*
 	while(i<bytes_read){
@@ -65,33 +64,36 @@ int copy_from_buffer(t_list **list, int fd)
 	}
 	*/
 	/*Lo mismo ni es necesario, porque devuelvo los bytes read y lo uso luego para hacer un break en el bucle y salir de él directamente*/
-	if(bytes_read<BUFFER_SIZE && bytes_read>0){
+	if (bytes_read < BUFFER_SIZE && bytes_read > 0)
+	{
 			ft_lstadd_back(list, ft_lstnew('\n')); //Artificial \n at EOF
 	}
-	if(bytes_read==0 && (*list)){
+	if (bytes_read == 0 && (*list))
+	{
 		//printf("bytes read: %i\n",bytes_read);
 		ft_lstadd_back(list, ft_lstnew('\n'));
-		return 0;
+		return (0);
 	}
 	free(buffer);
-	return bytes_read;
+	return (bytes_read);
 }
 
 
-char *copy_to_string(t_list **list, int size){
+char *copy_to_string(t_list **list, int size)
+{
+	t_list	*aux;
+	int		i;
+	char	*line;
+
+	i = 0;
 	if (!list || !(*list))
-        return NULL;  // Safety check
-
-	int i = 0;
-	char *line = (char *)malloc(size+1*sizeof(char));
-
+        return (NULL);  // Safety check
+	line = (char *)malloc(size+1*sizeof(char));
 	if (!line)
-        return NULL;
-
-	t_list *aux;
-	while(i<size){ // < o <= ?
-		line[i]=(*list)->content;
-		aux=(*list);
+        return (NULL);
+	while(i < size){ // < o <= ?
+		line[i] = (*list)->content;
+		aux = (*list);
 		*list = (*list)->next;
 		//ft_lstdelone(aux);
 		free(aux);
@@ -106,8 +108,8 @@ char *copy_to_string(t_list **list, int size){
         lstdelone(aux, free);
     }
 	*/
-	line[i]='\0';
-	return line;
+	line[i] = '\0';
+	return (line);
 }
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
@@ -139,7 +141,7 @@ t_list	*ft_lstnew(char buffer_content)
 	return (new);
 }
 
-void print_list(t_list *list)
+/* void print_list(t_list *list)
 {
 	t_list *a = list;
 	printf("list content: [");
@@ -148,7 +150,7 @@ void print_list(t_list *list)
 		a = a -> next;
 	}
 	printf("]\n");
-}
+} */
 
 void	ft_lstdelone(t_list *lst)
 {
