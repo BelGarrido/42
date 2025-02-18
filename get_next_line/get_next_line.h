@@ -31,12 +31,13 @@ typedef struct s_list
 }	t_list;
 
 char	* get_next_line(int fd);
-int		copy_from_buffer(t_list **list, int fd);
-int		contain_n(t_list *list);
+int		copy_from_buffer(t_list **list, int fd, int eof);
+int		check_list_write(t_list *list, int eof);
 void	ft_lstadd_back(t_list **list, t_list *new);
 t_list	*ft_lstnew(char buffer_content);
 char	*copy_to_string(t_list **list, int size);
 void	print_list(t_list *list);
 void	ft_lstdelone(t_list *lst);
+void	free_list(t_list **list);
 
 #endif

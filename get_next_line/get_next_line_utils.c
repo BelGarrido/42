@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-int contain_n(t_list *list)
+int check_list_write(t_list *list, int eof)
 {
 	int		size;
 	t_list	*aux;
@@ -21,61 +21,62 @@ int contain_n(t_list *list)
 	aux = list;
 	if (!list)
 		return (0);
-	//printf("LIST CONTENT: ");
 	while(aux != NULL)
 	{
-		//printf("%c", aux->content);
 		if(aux->content == '\n')
-			return size + 1; //vigilar si este +1 es necesario
+			return size + 1;
 		aux = aux -> next;
 		size++;
 	}
-	//printf("\n");
+	if (eof>0)
+		return size;
 	return (0);
 }
 
-//Si no modifica la lista, pasarla como doble puntero y manejarla así
-int copy_from_buffer(t_list **list, int fd)
+int copy_from_buffer(t_list **list, int fd, int eof)
 {
 	char	*buffer;
 	int		bytes_read;
 	int		i;
-
+	
+	if(eof>0){
+		return 1;
+	}
 	buffer = (char *)malloc(BUFFER_SIZE * sizeof(char));
 	if (!buffer)
-		return (-1); // Error handling
+	{
+		free_list(list);
+		return (-1);
+	}
+	if(((bytes_read = read(fd, buffer, BUFFER_SIZE)) < BUFFER_SIZE))
+	{
+		if(bytes_read<0){
+            free(buffer);
+            free_list(list);
+            return -1;
+        }else if(bytes_read==0){
+            free(buffer);
+            return 1;
+        }
+		eof = 1;
+		//free(buffer);
+		//esto es lo que decia ruben?
+	}
 	i = 0;
-	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	while (i<bytes_read)
 	{
-		ft_lstadd_back(list, ft_lstnew(buffer[i]));
+		t_list *new_node = ft_lstnew(buffer[i]);
+		if (!new_node)
+		{
+			free(buffer);
+			free_list(list);
+			return (-1);
+		}
+		ft_lstadd_back(list, new_node);
 		i++;
 	}
-	//ALTERNATIVE WHILE VERSION (GPT)
-	/*
-	while(i<bytes_read){
-		t_list *new_node = ft_lstnew(buffer[i]);
-        if (!new_node) {
-            free(buffer);
-            return -1;  // Handle allocation failure
-        }
-        ft_lstadd_back(list, new_node);
-        i++;
-	}
-	*/
-	/*Lo mismo ni es necesario, porque devuelvo los bytes read y lo uso luego para hacer un break en el bucle y salir de él directamente*/
-	if (bytes_read < BUFFER_SIZE && bytes_read > 0)
-	{
-			ft_lstadd_back(list, ft_lstnew('\n')); //Artificial \n at EOF
-	}
-	if (bytes_read == 0 && (*list))
-	{
-		//printf("bytes read: %i\n",bytes_read);
-		ft_lstadd_back(list, ft_lstnew('\n'));
-		return (0);
-	}
 	free(buffer);
-	return (bytes_read);
+	return (eof);
 }
 
 
@@ -91,23 +92,13 @@ char *copy_to_string(t_list **list, int size)
 	line = (char *)malloc(size+1*sizeof(char));
 	if (!line)
         return (NULL);
-	while(i < size){ // < o <= ?
+	while(i < size){
 		line[i] = (*list)->content;
 		aux = (*list);
 		*list = (*list)->next;
-		//ft_lstdelone(aux);
 		free(aux);
 		i++;
 	}
-	// Hay que avanzar otra posición para saltar el \n?
-	/* 
-	// Advance list to skip the '\n'
-    if (*list && (*list)->content == '\n') {
-        aux = *list;
-        *list = (*list)->next;
-        lstdelone(aux, free);
-    }
-	*/
 	line[i] = '\0';
 	return (line);
 }
@@ -141,7 +132,7 @@ t_list	*ft_lstnew(char buffer_content)
 	return (new);
 }
 
-/* void print_list(t_list *list)
+void print_list(t_list *list)
 {
 	t_list *a = list;
 	printf("list content: [");
@@ -150,13 +141,23 @@ t_list	*ft_lstnew(char buffer_content)
 		a = a -> next;
 	}
 	printf("]\n");
-} */
+}
 
 void	ft_lstdelone(t_list *lst)
 {
 	if (lst != NULL)
 	{
-		free(&(lst -> content));
 		free(lst);
+	}
+}
+
+void	free_list(t_list **list)
+{
+	t_list *tmp;
+	while (*list)
+	{
+		tmp = *list;
+		*list = (*list)->next;
+		free(tmp);
 	}
 }
