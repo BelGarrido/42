@@ -15,6 +15,7 @@
 int	append_node(t_list **list, int bytes_read, char *buffer)
 {
 	t_list	*new_node;
+	t_list	*tmp;
 	int		i;
 
 	i = 0;
@@ -23,27 +24,20 @@ int	append_node(t_list **list, int bytes_read, char *buffer)
 		new_node = ft_lstnew(buffer[i]);
 		if (!new_node)
 			return (clean_buffer(buffer, list, -1));
-		ft_lstadd_back(list, new_node);
+		tmp = *list;
+		if ((*list) && new_node)
+		{
+			while (tmp -> next != NULL)
+				tmp = tmp -> next;
+			tmp -> next = new_node;
+		}
+		else if (!(*list) && new_node)
+		{
+			*list = new_node;
+		}
 		i++;
 	}
 	return (0);
-}
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*tmp;
-
-	tmp = *lst;
-	if ((*lst) && new)
-	{
-		while (tmp -> next != NULL)
-			tmp = tmp -> next;
-		tmp -> next = new;
-	}
-	else if (!(*lst) && new)
-	{
-		*lst = new;
-	}
 }
 
 t_list	*ft_lstnew(char buffer_content)
@@ -58,13 +52,13 @@ t_list	*ft_lstnew(char buffer_content)
 	return (new);
 }
 
-void	ft_lstdelone(t_list *lst)
+/* void	ft_lstdelone(t_list *lst)
 {
 	if (lst != NULL)
 	{
 		free(lst);
 	}
-}
+} */
 
 int	clean_buffer(char *buffer, t_list **list, int re)
 {
