@@ -22,7 +22,7 @@ int	append_node(t_list **list, int bytes_read, char *buffer)
 	{
 		new_node = ft_lstnew(buffer[i]);
 		if (!new_node)
-			return clean_buffer(buffer, list, -1);
+			return (clean_buffer(buffer, list, -1));
 		ft_lstadd_back(list, new_node);
 		i++;
 	}
@@ -58,17 +58,6 @@ t_list	*ft_lstnew(char buffer_content)
 	return (new);
 }
 
-/* void	print_list(t_list *list)
-{
-	t_list *a = list;
-	printf("list content: [");
-	while(a != NULL){
-		printf("%c, ", a -> content);
-		a = a -> next;
-	}
-	printf("]\n");
-} */
-
 void	ft_lstdelone(t_list *lst)
 {
 	if (lst != NULL)
@@ -80,16 +69,17 @@ void	ft_lstdelone(t_list *lst)
 int	clean_buffer(char *buffer, t_list **list, int re)
 {
 	t_list	*tmp;
-	
+
 	if (buffer)
 		free(buffer);
-	if (list){
+	if (list)
+	{
 		while (*list)
 		{
 			tmp = *list;
 			*list = (*list)->next;
-			free(tmp);
-		}	
+			free (tmp);
+		}
 	}
 	return (re);
 }

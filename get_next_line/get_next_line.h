@@ -13,10 +13,10 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <fcntl.h>   // For open(), O_RDONLY, etc.
-# include <unistd.h>  // For read(), close(), etc.
-# include <stdlib.h>  // For malloc(), free(), etc.
-# include <stdio.h>   // For debugging with printf(), perror(), etc.
+# include <fcntl.h>   // open(), O_RDONLY, etc.
+# include <unistd.h>  // read(), close(), etc.
+# include <stdlib.h>  // malloc(), free(), etc.
+# include <stdio.h>   // debugging with printf(), perror(), etc.
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE	5  // Default buffer size
@@ -40,8 +40,7 @@ void	print_list(t_list *list);
 void	ft_lstdelone(t_list *lst);
 void	free_list(t_list **list);
 char	*clean(t_list **list, int *eof);
-int 	clean_buffer(char *buffer, t_list **list, int re);
-int 	*general_clean(t_list **list, int *eof, char *buffer,  int re);
-
+int		clean_buffer(char *buffer, t_list **list, int re);
+//int		*general_clean(t_list **list, int *eof, char *buffer, int re);
 
 #endif

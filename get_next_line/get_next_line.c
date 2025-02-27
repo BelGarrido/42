@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anagarri <anaigd93@gmail.com>              +#+  +:+       +#+        */
+/*   By: anagarri <anagarri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 11:00:11 by anagarri          #+#    #+#             */
-/*   Updated: 2025/02/21 22:26:56 by anagarri         ###   ########.fr       */
+/*   Updated: 2025/02/27 15:52:08 by anagarri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ int	copy_from_buffer(t_list **list, int fd, int eof)
 		return (1);
 	buffer = (char *)malloc(BUFFER_SIZE * sizeof(char));
 	if (!buffer)
-		return clean_buffer(NULL, list, -1);
+		return (clean_buffer(NULL, list, -1));
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	if (bytes_read < BUFFER_SIZE)
 	{
 		if (bytes_read < 0)
-			return clean_buffer(buffer, list, -1);
+			return (clean_buffer(buffer, list, -1));
 		else if (bytes_read == 0)
-			return clean_buffer(buffer, NULL, 1);
+			return (clean_buffer(buffer, NULL, 1));
 		eof = 1;
 	}
 	append_node(list, bytes_read, buffer);
@@ -96,17 +96,19 @@ char	*get_next_line(int fd)
 	{
 		eof = copy_from_buffer(&list, fd, eof);
 		if (eof < 0 || (!list && eof > 0))
-			return clean(&list, &eof);
+			return (clean(&list, &eof));
 		size_to_write = check_list_write(list, eof);
 	}
 	line = copy_to_string(&list, size_to_write);
 	if (!line)
-		return (char*) clean(&list, &eof);
+		return ((char *)clean(&list, &eof));
 	return (line);
 }
 
-char *clean(t_list **list, int *eof){
+char	*clean(t_list **list, int *eof)
+{
 	t_list	*tmp;
+
 	while (*list)
 	{
 		tmp = *list;
@@ -129,7 +131,6 @@ char *clean(t_list **list, int *eof){
 	}
 	return (re);
 } */
-
 
 /* int main(void)
 {
